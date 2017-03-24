@@ -196,7 +196,7 @@ angular.module('ion-geo', [])
                                 params: {
                                     latlng: lat + ',' + lng,
                                     language: 'en',
-                                    key: 'AIzaSyC57Wo22mMcQufa-9I0LHQl9XXr0Nu0IiU'
+                                    key: ''
                                 }
                             }).success(function(res){
                                 var results = res['results'];
