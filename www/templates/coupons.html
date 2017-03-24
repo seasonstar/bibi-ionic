@@ -1,0 +1,25 @@
+<ion-view>
+    <ion-header-bar>
+        <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+        <div class="title">折扣券</div>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-footer">
+
+        <ion-list>
+            <ion-item class="item" ng-repeat="c in user.getUser().consumable_coupons">
+                {{c.description}}  {{c.number}}张
+                <span class="item-note">
+                    有效期 {{c.expire_date}}
+                </span>
+
+            </ion-item>
+        </ion-list>
+        <div class="center-ico" ng-if="notices.==0">
+            <i class="icon ion-ios-camera"></i>
+
+            <h1 >暂无动态</h1>
+        </div>
+
+    </ion-content>
+</ion-view>

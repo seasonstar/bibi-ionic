@@ -1,0 +1,16 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+      <div class="title">商品类目</div>
+  </div>
+  <ion-content class="has-header categories">
+        <div class="cate-row" ng-repeat="cate in categories">
+            <ion-item class="main">{{cate.cn}}</ion-item>
+            <div class="sub-list">
+                <div class="sub" ng-repeat="sub in cate.sub_list">
+                    <a ng-href="#/category/{{sub.en}}/{{sub.cn}}">{{sub.cn}}</a>
+                </div>
+            </div>
+        </div>
+  </ion-content>
+</ion-view>

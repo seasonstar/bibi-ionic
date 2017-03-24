@@ -1,0 +1,17 @@
+{
+  "name": "maybi-ionic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.1.1",
+    "ionic-platform-web-client": "~0.2.1"
+  },
+  "dependencies": {
+    "ionic-image-lazy-load": "ion-image-lazy-load#*",
+    "font-awesome": "fontawesome#~4.5.0",
+    "jr-crop": "~1.1.2",
+    "ionic-cache-src": "~0.6.0",
+    "ion-sticky": "~1.0.4",
+    "angular-svg-round-progressbar": "~0.3.9",
+    "ionic-zoom-view": "~2.0.0"
+  }
+}

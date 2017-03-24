@@ -1,0 +1,122 @@
+/**
+ * keypad Sheets
+ * --------------------------------------------------
+ */
+.keypad-sheet-backdrop {
+    -webkit-transition: background-color 150ms ease-in-out;
+    transition: background-color 150ms ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); }
+.keypad-sheet-backdrop.active {
+    background-color: rgba(0, 0, 0, 0.4); }
+.keypad-sheet-overlay {
+    height:100%;
+    width:100%;
+    z-index:100;
+}
+
+.keypad-sheet-wrapper {
+    z-index:200;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    -webkit-transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+    transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 500px;
+    margin: auto; }
+
+.keypad-sheet-up {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+
+.keypad-sheet {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: auto;
+    z-index: 11;
+    overflow: hidden; }
+.keypad-sheet .button {
+    display: block;
+    padding: 1px;
+    width: 100%;
+    border-radius: 0;
+    font-size: 21px; }
+
+.keypad-sheet .button.destructive {
+    color: #ff3b30; }
+.keypad-sheet .button.destructive:hover {
+    color: #ff3b30; }
+.keypad-sheet .button.active, .keypad-sheet .button.activated {
+    box-shadow: none;
+    border-color: #d1d3d6;
+    color: #007aff;
+    background: #e4e5e7; }
+
+.keypad-sheet-has-icons .icon {
+    position: absolute;
+    left: 16px; }
+
+.keypad-sheet-title {
+    padding: 16px;
+    color: #8f8f8f;
+    text-align: center;
+    font-size: 14px; }
+
+.keypad-sheet-group {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    overflow: hidden; }
+.keypad-sheet-group .button {
+    border-width: 1px 0px 0px 0px;
+}
+.keypad-sheet-group-num .button {
+    height: 60px;
+    font-size: 2.2em;
+    padding-top: 8px;
+    border-color: #d1d3d6;
+    background-color: transparent;
+    color: #007aff;
+}
+.keypad-sheet-group .button:first-child:last-child {
+    border-width: 0; }
+
+.keypad-sheet-options {
+    background: #f1f2f3; }
+
+.keypad-sheet-cancel .button {
+    font-weight: 500; }
+
+.keypad-sheet-open {
+    pointer-events: none; }
+.keypad-sheet-open.modal-open .modal {
+    pointer-events: none; }
+.keypad-sheet-open .keypad-sheet-backdrop {
+    pointer-events: auto; }
+
+/**keypad show paned**/
+.keypad-show-num{
+    height: 70px;
+}
+.keypad-show-num .col{
+    padding-top: 10px;
+    text-align: center
+}
+.keypad-show-num .col .num-show{
+    height: 50px;
+    max-width: 50px;
+    display: block;
+    border: solid 1px #ccc;
+    font-size: 3em;
+    padding-top: 12px;
+    margin: 0 auto;
+}

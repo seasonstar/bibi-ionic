@@ -1,0 +1,19 @@
+<!-- 意见反馈 -->
+<ion-view>
+    <div class="bar bar-header">
+        <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+        <div class="title">意见反馈</div>
+    </div>
+
+    <ion-content class="has-header">
+        <div class="faq-row">
+            <div class="faq-title">
+                意见反馈:
+            </div>
+            <div class="faq-desc">
+                <textarea ng-model="text" class="ng-pristine ng-untouched ng-valid"></textarea>
+                <button ng-click="feedback()" class="button button-assertive pull-right button">提交</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-modal-view id="ion-google-place-container">
+    <form>
+    <div class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input class="google-place-search" type="search" ng-model="searchQuery"
+                placeholder="输入邮编或地址">
+            <input type="submit" ng-click="search(searchQuery)" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+        </label>
+        <button class="button button-clear" ng-click="closeModal()">
+            取消
+        </button>
+    </div></form>
+    <ion-content class="has-header has-header">
+        <ion-list>
+            <ion-item type="item-text-wrap" ng-click="setCurrentLocation()" ng-if="displayCurrentLocation">
+                <i class="icon ion-ios-location"></i> 获取当前位置
+            </ion-item>
+            <ion-item ng-repeat="location in locations" type="item-text-wrap" ng-click="selectLocation(location)">
+                {{location}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-modal-view>

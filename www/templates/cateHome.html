@@ -1,0 +1,82 @@
+<ion-view>
+    <form>
+    <div class="bar bar-header item-input-inset">
+      <a href="#/home" class="button button-icon icon ion-navicon"></a>
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="搜索商品，种类" ng-model="searchQuery">
+        <input type="submit" ng-click="searchItem(searchQuery)" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+      </label>
+      <span class="cart-num">{{ ngCart.getTotalItems() }}</span>
+      <a href="#/cart" class="button button-icon icon ion-ios-cart"></a>
+    </div>
+    </form>
+    <div class="bar bar-subheader">
+      <ion-scroll direction="x" scrollbar-x="false" id="category-scroll" delegate-handle="cateScroll">
+        <div class="cate-scroll-row" >
+            <a href class="main-cate-tab" ng-repeat="(k, v) in Categories" ng-class="{'active': currentTab==k}" ng-click="changeTab(k, $index)">{{v}}</a>
+        </div>
+      </ion-scroll>
+    </div>
+    <ion-content class="has-header has-subheader homepage"  overflow-scroll="true">
+
+        <ion-item class="item" style="border-left: 3px solid #ea004f;">
+            美比严选
+            <span class="item-note" style="color: #ea004f;">
+                全场满$79.99免邮
+            </span>
+        </ion-item>
+
+        <ion-slide-box show-pager="false"
+            on-slide-changed="slideHasChanged($index)"
+            active-slide="currentIndex">
+            <ion-slide ng-repeat="(k,v) in Categories">
+
+                <div ng-if="currentTab==k">
+                    <ion-refresher
+                        pulling-text="下拉刷新..."
+                        on-refresh="doRefresh()"
+                        spinner="spiral">
+                    </ion-refresher>
+
+                    <div class="col col-50 "
+                         style="display: inline-block"
+                        ng-repeat="item in items track by $index" ng-click="goItem(item.item_id)">
+                        <div class="item item-image">
+                            <img ng-src="{{::item.thumbnail}}">
+                        </div>
+                        <div class="item item-text-wrap" href="#">
+                            <h2 class="product-title" style="overflow: hidden;">{{::item.title}}</h2>
+                            <p class="product-prices">
+                                <span class="curr-price">{{::item.price | currency}}</span>
+                                <del class="orig-price">{{::item.orig_price | currency}}</del>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="center-ico" ng-if="isEmpty()">
+                        <i class="icon ion-ios-grid-view-outline"></i>
+
+                        <h1 >暂无此类商品</h1>
+                    </div>
+
+                    <ion-infinite-scroll
+                        on-infinite="loadMore()"
+                        distance="1"
+                        spinner='spiral'
+                        ng-if="moreDataCanBeLoaded()">
+                    </ion-infinite-scroll>
+
+                </div>
+                <div ng-if="currentTab!=k">
+                    <div style="background:#f9f9f9;padding-top:100%;height:0"></div>
+                </div>
+
+
+
+            </ion-slide>
+        </ion-slide-box>
+
+
+    </ion-content>
+</ion-view>

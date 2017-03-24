@@ -1,0 +1,9 @@
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+*.iml
+*.ipr
+*.iws
+.idea
+
+
+node_modules
+bower_components

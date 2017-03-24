@@ -1,0 +1,34 @@
+<ion-view class="view-post">
+    <ion-header-bar class="bar bar-header">
+        <button class="button button-clear button-dark icon ion-ios-arrow-back"
+              ng-click="$ionicGoBack()"></button>
+        <div class="title">我的发布</div>
+    </ion-header-bar>
+
+    <ion-content class="has-header" overflow-scroll="false">
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="doRefresh()"
+            spinner="spiral">
+        </ion-refresher>
+        <div class="list card "
+            ng-repeat="post in posts track by $index">
+            <photo-list post="post"></photo-list>
+        </div>
+
+        <div class="center-ico" ng-if="isEmpty()">
+            <i class="icon ion-ios-camera"></i>
+
+            <h1 >您还没发布过</h1>
+        </div>
+
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1"
+            spinner='spiral'
+            ng-if="moreDataCanBeLoaded()">
+        </ion-infinite-scroll>
+        <!--<div ng-if="!moreDataCanBeLoaded()" class="item item-divider no-more-data">没有更多数据啦!</div>-->
+
+    </ion-content>
+</ion-view>

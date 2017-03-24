@@ -1,0 +1,35 @@
+<ion-view>
+    <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+      <div class="title">{{::board.title}}</div>
+    </div>
+
+    <ion-content class="has-header homepage">
+        <div class="item item-banner-image">
+            <img ng-src="{{::board.image}}">
+        </div>
+
+        <ion-item class="item board-desc" style="border-left: 3px solid #ea004f;">
+            {{::board.desc}}
+        </ion-item>
+
+        <div class="col col-50 "
+             style="display: inline-block"
+             ng-repeat="item in board.items track by $index" ng-click="goItem(item.item_id)">
+            <div class="item item-image">
+                <img ng-src="{{::item.thumbnail}}" cache-src>
+            </div>
+            <div class="item item-text-wrap" href="#">
+                <h2 class="product-title" style="overflow: hidden;">{{::item.title}}</h2>
+                <p class="product-prices">
+                    <span class="curr-price">{{::item.price | currency}}</span>
+                    <del class="orig-price">{{::item.orig_price | currency}}</del>
+                </p>
+            </div>
+        </div>
+
+
+
+
+    </ion-content>
+</ion-view>

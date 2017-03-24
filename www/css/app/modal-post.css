@@ -1,0 +1,236 @@
+@charset "UTF-8";
+/*   post   */
+.maybi .item-divider {
+  min-height: 20px; }
+
+.maybi .input-label {
+  display: block; }
+
+.maybi .title.text-left {
+  text-align: left; }
+
+.maybi .modal-post {
+  font-size: 14px; }
+  .maybi .modal-post .list i.icon {
+    font-size: 25px;
+    padding: 0; }
+  .maybi .modal-post .list .item-tag {
+    border-bottom: 0px; }
+  .maybi .modal-post .tag-row {
+    font-size: 13px; }
+    .maybi .modal-post .tag-row .tag-text {
+      text-align: center;
+      line-height: 32px; }
+    .maybi .modal-post .tag-row .tag {
+      padding: 3px 12px;
+      border: 1px solid #888;
+      border-radius: 18px;
+      margin: 2px 2px 8px 5px;
+      display: inline-block; }
+      .maybi .modal-post .tag-row .tag.selected {
+        border: 1px solid #F23030;
+        color: #F23030; }
+      .maybi .modal-post .tag-row .tag.unselect {
+        opacity: 0.5; }
+  .maybi .modal-post .item-stacked-label {
+    border-bottom: 0px; }
+  .maybi .modal-post .add-image {
+    display: inline-block;
+    background: white;
+    border: 1px dashed #d8d8d8;
+    color: #d8d8d8;
+    text-align: center;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    line-height: 26px; }
+
+.maybi .modal-capture .bar-filter {
+  display: inline-block;
+  margin: 0 auto;
+  width: 50%; }
+
+.maybi .modal-capture .footer-tab {
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  line-height: 37px;
+  width: 100%; }
+
+.maybi .modal-capture .footer-tab.active {
+  border-bottom: 2px solid #F23030;
+  color: #F23030; }
+
+.maybi .modal-capture .bar-carousel {
+  height: 160px;
+  border-top: 1px solid #f8f8f8; }
+
+.maybi .modal-capture .has-carousel {
+  bottom: 205px; }
+
+.maybi .modal-capture .bar-subfooter {
+  background: #f8f8f8; }
+
+.maybi .modal-capture .bar-footer {
+  background: #f2f2f2; }
+
+.maybi .modal-capture .photo-carousel {
+  margin-top: 16px; }
+
+.maybi .post-textarea {
+  border: 0px; }
+  .maybi .post-textarea textarea {
+    height: 128px;
+    resize: none;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0px 10px 0 28px; }
+
+.maybi .capture-photo {
+  display: block;
+  position: relative; }
+  .maybi .capture-photo .image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 300px; }
+    .maybi .capture-photo .image.disabled img, .maybi .capture-photo .image.disabled canvas {
+      opacity: 0; }
+    .maybi .capture-photo .image img, .maybi .capture-photo .image canvas {
+      width: 100%; }
+  .maybi .capture-photo ion-spinner {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-top: -24px;
+    margin-left: -24px;
+    z-index: 3;
+    color: #fff; }
+    .maybi .capture-photo ion-spinner svg {
+      width: 48px;
+      height: 48px; }
+
+.maybi .wide-as-needed {
+  white-space: nowrap;
+  padding-right: 10px; }
+  .maybi .wide-as-needed a {
+    display: inline-block;
+    position: relative;
+    margin: 10px 8px 16px 0;
+    font-size: 11px; }
+    .maybi .wide-as-needed a i {
+      position: absolute;
+      z-index: 10;
+      color: grey;
+      top: -10px;
+      left: 68px; }
+    .maybi .wide-as-needed a .image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0px;
+      background: #333;
+      height: 84px;
+      width: 84px; }
+      .maybi .wide-as-needed a .image img, .maybi .wide-as-needed a .image canvas {
+        max-height: 84px; }
+      .maybi .wide-as-needed a .image.add {
+        background: white;
+        border: 1px solid #d8d8d8;
+        color: #d8d8d8;
+        text-align: center;
+        vertical-align: middle;
+        height: 80px;
+        width: 80px; }
+      .maybi .wide-as-needed a .image.disabled img, .maybi .wide-as-needed a .image.disabled canvas {
+        opacity: 0; }
+      .maybi .wide-as-needed a .image i {
+        font-size: 40px;
+        line-height: 80px;
+        text-align: center; }
+    .maybi .wide-as-needed a p {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -28px;
+      color: #444;
+      right: 0;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 14px; }
+
+/*   geolocation    */
+.ion-google-place-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20; }
+
+input.ion-google-place[readonly] {
+  background-color: transparent;
+  cursor: text;
+  width: 100%;
+  height: 22px;
+  text-align: right; }
+
+.tag-modal .select-icon {
+  color: #888;
+  font-size: 28px; }
+  .tag-modal .select-icon.selected {
+    color: #F23030;
+    font-size: 28px; }
+
+.tag-modal .tag {
+  padding: 0px 12px;
+  border: 1px solid #d3d3d3;
+  border-radius: 18px;
+  margin-right: 8px; }
+
+.photo-tag {
+  text-align: center; }
+  .photo-tag div {
+    margin: 0 auto; }
+  .photo-tag .tag {
+    text-align: center;
+    width: 66px;
+    height: 66px;
+    line-height: 66px;
+    border-radius: 33px;
+    color: white;
+    border: 2px solid white; }
+    .photo-tag .tag.tag-service {
+      background: url(../img/icons/tag-service.png) center no-repeat;
+      background-size: 66px; }
+    .photo-tag .tag.tag-show {
+      background: url(../img/icons/tag-show.png) center no-repeat;
+      background-size: 66px; }
+    .photo-tag .tag.tag-trade {
+      background: url(../img/icons/tag-trade.png) center no-repeat;
+      background-size: 66px; }
+    .photo-tag .tag.selected {
+      border: 4px solid white;
+      box-shadow: 1px 1px 3px #888; }
+  .photo-tag p.selected {
+    color: #F23030; }
+  .photo-tag .send {
+    position: relative;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    background: #fff;
+    border-radius: 5px;
+    /* 圆角 */
+    margin: 12px auto 0;
+    color: #888; }
+    .photo-tag .send .arrow {
+      position: absolute;
+      top: 5px;
+      right: -16px;
+      /* 圆角的位置需要细心调试哦 */
+      width: 0;
+      height: 0;
+      font-size: 0;
+      border: solid 8px;
+      border-color: #f8f8f8 #f8f8f8 #f8f8f8 #fff; }

@@ -1,0 +1,55 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+      <div class="title">关于我们</div>
+  </div>
+  <ion-content class="has-header account">
+    <ion-list>
+        <div class="about">
+          <div class="logo"></div>
+        </div>
+
+      <ion-item class="item item-icon-left">
+          <i class="icon ion-ios-flag"></i>
+          版本号
+          <span class="item-note">
+              {{appUpdateService.getVersions()}}
+          </span>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right" ng-click="$state.go('intro')">
+          <i class="icon ion-ios-information-empty"></i>
+          介绍页
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right"
+          onclick="window.open('http://may.bi/#/faq', '_blank', 'location=no,toolbarposition=top,closebuttoncaption=关闭')">
+          <i class="icon ion-ios-help-outline"></i>
+          常见问题
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right"
+          onclick="window.open('http://may.bi/#/customer-service', '_blank', 'location=no,toolbarposition=top,closebuttoncaption=关闭')">
+          <i class="icon ion-ios-chatboxes"></i>
+          联系客服
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right"
+          ng-click="$state.go('tab.feedback')">
+          <i class="icon ion-ios-compose-outline"></i>
+          意见反馈
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right"
+          onclick="window.open('itms-apps://itunes.apple.com/app/id1080870817', '_system')" ng-if="platform.isIOS()">
+          <i class="icon ion-bag"></i>
+          评分鼓励
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <div class="copyright">
+        <p>Copyright @ 2015</p>
+        <p>深圳市美比科技有限公司</p>
+
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

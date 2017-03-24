@@ -1,0 +1,122 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$state.go('tab.orders')"></button>
+      <div class="title">订单详情</div>
+  </div>
+
+  <ion-content class="has-header">
+
+<section class="orders">
+<div class="checkout-info">
+    <span class="addr-icon"></span>
+    <div class="address-info">
+        <p class="addr-header">收货人信息: </p>
+        <div class="">{{order.address.receiver}}</div>
+        <div class="">{{order.address.street1}}</div>
+        <div class="">{{order.address.street2}}</div>
+        <div class="">{{order.address.city}}, {{order.address.state}}</div>
+        <div class="">{{order.address.country}}, {{order.address.postcode}}</div>
+    </div>
+</div>
+</section>
+
+<section class="clearfix" ng-cloak>
+<div class="">
+    <table class="table ngCart cart-table">
+        <tbody>
+        <tr ng-repeat="entry in order.entries track by $index">
+            <td class="img-cell">
+                <div>
+                    <img ng-src="{{entry.spec.images[0]}}">
+                </div>
+            </td>
+            <td class="info-cell">
+                <div>{{ entry.item.title }}</div>
+                <div>
+                    <span ng-repeat="(k, v) in entry.spec.attributes">
+                        {{ngCart.attrMap[k]}}: {{v}}
+                    </span>
+                </div>
+                <div class="btn-group cart-btn">
+                    <span>数量: {{ entry.quantity | number }}</span>
+                </div>
+            </td>
+            <td class="price-cell">{{ entry.amount_usd | currency }}</td>
+        </tr>
+    </table>
+</div>
+</section>
+<section>
+<div class="checkout-info">
+    <div class="icon partner-icon address"></div>
+    <div class="partner-info">
+        <div class="selected-partner">{{order.provider.display_name}} ({{order.provider.service_intro.duration}}):
+            <span class="detail-price pull-right">{{order.cn_shipping | currency }}</span>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+<div class="checkout-info">
+    <div class="icon coupon-icon address"></div>
+    <div class="coupon-info">
+        <div ng-show="order.discount.length==1" class="">{{order.discount[0].desc}}
+            <span class="detail-price pull-right">- {{order.discount[0].value | currency }}</span>
+        </div>
+        <div ng-show="order.discount.length==0" class="">
+            不使用
+        </div>
+    </div>
+</div>
+</section>
+
+
+<section>
+<div class="checkout-info">
+    <div class="item-info-table">
+        <dl class="item-info-field">
+            <dt class="">商品总价: </dt>
+            <dd class="detail-price">{{order.amount_usd | currency }}</dd>
+        </dl>
+        <dl class="item-info-field">
+            <dt class="">运费: </dt>
+            <dd class="detail-price">{{order.cn_shipping | currency }}</dd>
+        </dl>
+        <dl class="item-info-field">
+            <dt class="">税费: </dt>
+            <dd class="detail-price">0</dd>
+        </dl>
+    </div>
+</div>
+<div class="order-bottom">
+    <div class="">
+        订单号：{{order.short_id}}
+    </div>
+    <div class="">
+        创建时间: {{order.created_at}}
+    </div>
+</div>
+</section>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-stable">
+    <a class="button button-clear">
+        总计: <span class="footer-price"> {{ order.final |currency}}</span>
+    </a>
+    <h1 class="title"></h1>
+    <div class="buttons">
+        <ngcart-checkout ng-if="order.payment_status=='UNPAID'" settings="{ order_id: order.id , order_type: 'existed'}">
+            去付款
+        </ngcart-checkout>
+        <button class="button button-clear" ng-disabled="order.payment_status=='PAID'"
+            ng-if="order.payment_status=='PAID'">
+            已付款
+        </button>
+        <button class="button button-default"
+            ng-click="cancelOrder()"
+            ng-if="order.payment_status=='UNPAID'">
+            取消订单
+        </button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

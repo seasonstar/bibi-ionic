@@ -1,0 +1,40 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <button class="button button-clear icon ion-ios-close-empty" ng-click="closeAuthBox()"></button>
+    <div class="title">登陆</div>
+  </ion-header-bar>
+  <ion-content class="login-page overlay-content" ng-controller="authCtrl" >
+      <div class="logo"></div>
+      <div class="logo-desc">比邻中国的海外生活</div>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="email" placeholder="邮箱地址" ng-model="email">
+      </label>
+
+      <label class="item item-input">
+        <input type="password" placeholder="密码" ng-model="password">
+      </label>
+    </div>
+
+    <button class="button button-block login-btn" ng-click="login()">
+        登陆
+    </button>
+
+    <div class="list login-btn-group">
+        <button class="button button-clear button-dark pull-left" ng-click="showForgotPWBox()">
+            忘记密码?
+        </button>
+        <button class="button button-clear button-dark pull-right" ng-click="showSignupBox()">
+            邮箱注册
+        </button>
+    </div>
+
+    <div class="third-party-box">
+        <p>使用第三方账号登陆</p>
+
+        <i ng-show="IsWechatInstalled" ng-click="oauthLogin('wechat_app')" class="login-icon1 fa fa-wechat"></i>
+        <i ng-click="oauthLogin('weibo_app')" class="login-icon1 fa fa-weibo"></i>
+        <i ng-click="oauthLogin('facebook_app')" class="login-icon1 fa fa-facebook"></i>
+    </div>
+  </ion-content>
+</ion-modal-view>

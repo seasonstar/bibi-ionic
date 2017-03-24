@@ -1,0 +1,44 @@
+ <ion-modal-view class="tag-modal">
+    <ion-header-bar>
+        <button class="button button-clear button-dark" ng-click="closeModal()">取消</button>
+        <div class="title">添加标签</div>
+        <button class="button button-clear button-dark" ng-click="confirmTags()">确定</button>
+    </ion-header-bar>
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="搜索或添加新标签" ng-model="ui.searchQuery">
+        </label>
+        <button class="button button-clear button-icon icon ion-ios-close-empty"
+            ng-click="clearSearch()">
+        </button>
+    </div>
+
+    <ion-content class="has-subheader has-header has-footer">
+        <div class="list">
+            <ion-item ng-click="addNewTag()" ng-if="ui.searchQuery">
+                <i class="icon ion-ios-plus-empty"></i> 添加新标签: {{ui.searchQuery}}
+            </ion-item>
+            <div class="item item-divider">{{options.name}}</div>
+            <div class="item item-icon-right"
+                ng-repeat="tag in options.tag_list | filter: ui.searchQuery"
+                ng-click="setOption(tag)">
+                {{tag}}
+                <i class="icon select-icon"
+                    ng-class="compareValues(tag)? 'ion-ios-checkmark selected':'ion-ios-circle-outline'">
+                </i>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar bar-stable">
+        <span class="button button-clear">
+        已选：
+            <button class="button button-light icon-right ion-ios-close-empty tag"
+                ng-repeat="tag in ui.checkedTags"
+                ng-click="setOption(tag)">
+                {{tag}}
+            </button>
+        </span>
+    </ion-footer-bar>
+
+</ion-modal-view>

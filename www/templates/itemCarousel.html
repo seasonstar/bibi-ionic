@@ -1,0 +1,29 @@
+<ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed item-carousel">
+    <div class="col col-33 "
+         style="display: inline-block"
+        ng-repeat="item in items" ng-click="goItem(item.item_id)">
+        <div class="item item-image">
+            <img ng-src="{{::item.thumbnail}}">
+        </div>
+        <div class="item item-text-wrap" href="#">
+            <p class="">{{::item.title}}</p>
+            <p class="product-prices">
+                <span class="curr-price">{{::item.price | currency}}</span>
+            </p>
+        </div>
+    </div>
+    <div class="col col-33 "
+         style="display: inline-block"
+        ng-click="goBoard()">
+        <div class="item item-image">
+            <div class="item-image-text">
+                <p>查看全部<p>
+                <p>See All<p>
+            </div>
+        </div>
+        <div class="item item-text-wrap" style="background: transparent">
+            <p class="" style="color:transparent">See </p>
+            <p class="" style="color:transparent">All </p>
+        </div>
+    </div>
+</ion-scroll>

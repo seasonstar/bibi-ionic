@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="cropper">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>jr-crop demo</title>
+
+    <link href="/bower/ionic/release/css/ionic.css" rel="stylesheet">
+    <link href="/dist/jr-crop.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="/bower/ionic/release/js/ionic.bundle.js"></script>
+    <script src="/dist/jr-crop.js"></script>
+    <style>
+    html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
+    </style>
+  </head>
+ 
+  <body>
+    
+    <div ng-controller="MainController">
+      <ion-header-bar class="bar-positive">
+        <h1 class="title">Ionic Delete/Option Buttons</h1>
+      </ion-header-bar>
+
+      <ion-content>
+        <ion-list>
+          <a class="item item-thumbnail-left" ng-repeat="image in images" href="#" ng-click="crop(image)">
+            <img ng-src="{{image}}">
+          </a>
+        </ion-list>
+      </ion-content>
+
+    </div>
+    
+    <script id="result-cropped.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Cropped version</h1>
+          <button class="button button-clear button-primary" ng-click="modal.remove()">Close</button>
+        </ion-header-bar>
+        <ion-content>
+          <div class="cropped-canvas"></div>
+        </ion-content>
+      </div>
+    </script>
+    
+    <script>
+    angular.module('cropper', ['ionic', 'jrCrop'])
+
+    .controller('MainController', function($scope, $ionicModal, $jrCrop) {
+      $scope.images = [
+        'images/kitten_1.jpeg',
+        'images/kitten_2.jpeg',
+        'images/kitten_3.jpeg',
+        'images/kitten_4.jpeg',
+        'images/kitten_5.jpeg',
+      ]
+
+      $scope.crop = function(image) {
+        $jrCrop.crop({
+          url: image,
+          width: 200,
+          height: 200
+        }).then(function(canvas) {
+          $ionicModal.fromTemplateUrl('result-cropped.html', function(modal) {
+            $scope.modal = modal;
+
+            modal.show().then(function() {
+              document.querySelector('.cropped-canvas').appendChild(canvas);
+            });
+          })
+        });
+      };
+    });
+    </script>
+  </body>
+</html>

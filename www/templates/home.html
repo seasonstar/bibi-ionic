@@ -1,0 +1,79 @@
+<ion-view>
+    <form>
+    <div class="bar bar-header item-input-inset">
+      <a href="#/cateHome" class="button button-icon icon ion-grid"></a>
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="搜索商品，种类" ng-model="searchQuery">
+        <input type="submit" ng-click="searchItem(searchQuery)" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+      </label>
+      <span class="cart-num">{{ ngCart.getTotalItems() }}</span>
+      <a href="#/cart" class="button button-icon icon ion-ios-cart"></a>
+    </div>
+    </form>
+    <ion-content class="has-header homepage"  overflow-scroll="true">
+        <ion-slide-box delegate-handle="image-viewer">
+            <!--ng-style="{'height':(banners?'auto':'0px'),'padding-top':(banners?'0':'42.1875%')}">-->
+            <ion-slide ng-repeat="banner in banners track by $index" >
+                <img ng-src="{{ ::banner.img }}" ng-click="redirectTo(banner)">
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="row intro-box">
+            <div class="col col-25">
+                <a href="#/categories">
+                    <i class="icon category"></i>
+                    <p>商品分类</p>
+                </a>
+
+            </div>
+            <div class="col col-25">
+                <a href="#/calculate">
+                    <i class="icon calculate"></i>
+                    <p>运费估算</p>
+                </a>
+            </div>
+            <div class="col col-25">
+                <a href="#/express">
+                    <i class="icon send"></i>
+                    <p>待寄出国</p>
+                </a>
+
+            </div>
+            <div class="col col-25">
+                <a href="#/limit">
+                    <i class="icon limit"></i>
+                    <p>邮寄限制</p>
+                </a>
+            </div>
+        </div>
+
+        <ion-item class="item" style="border-left: 3px solid #ea004f;">
+            美周专题
+        </ion-item>
+
+
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="doRefresh()"
+            spinner="spiral">
+        </ion-refresher>
+
+        <div class="animated fadeIn" ng-repeat="board in boards track by $index" >
+            <div class="item item-banner-image">
+                <div class="tri"></div>
+                <img ng-src="{{ ::board.image }}" ng-click="goBoard(board.id)">
+            </div>
+            <item-carousel board="board"></item-carousel>
+            <div class="item item-divider"></div>
+        </div>
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1"
+            spinner='spiral'
+            ng-if="moreDataCanBeLoaded()">
+        </ion-infinite-scroll>
+
+
+    </ion-content>
+</ion-view>

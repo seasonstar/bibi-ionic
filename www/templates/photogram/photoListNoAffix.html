@@ -1,0 +1,53 @@
+<div class="list card"  ng-click="goPost()">
+    <div class="item item-avatar">
+        <img  ng-src="{{::post.user.avatar_thumb}}" ng-click="$event.stopPropagation();goUser()">
+        <h2>{{::post.user.name}}
+            <div class="post-type" ng-class="{{'post.type.en'}}">
+                <i class="icon ion-bookmark"></i> {{::post.type.cn}}
+            </div>
+            <span class="item-note">{{::post.created_at | amTimeAgo}}</span>
+        </h2>
+    </div>
+
+    <div class="item item-image" >
+        <img ng-src="{{::post.large_url}}"
+            ng-click="$event.stopPropagation();zoom()">
+    </div>
+    <div class="item item-body">
+        <p show-more='40' class="post-body" title="post.title"></p>
+    </div>
+
+
+    <div class="item item-buttons">
+        <div class="row">
+            <div class="col col-50 text-left">
+                <button ng-click="$event.stopPropagation();like()"
+                    ng-class="post.is_liked ? 'ion-ios-heart' : 'ion-ios-heart-outline' "
+                    class="button button-clear button-dark icon-left button-heart">
+                    {{post.num_likes || '喜欢'}}
+                </button>
+                <button ng-click=""
+                    class="button button-clear button-dark icon-left ion-ios-chatbubble-outline">
+                    {{post.num_comments || '评论'}}
+                </button>
+                <button ng-click="$event.stopPropagation();actions()"
+                    class="button button-clear button-dark icon-left ion-ios-more" >
+                </button>
+            </div>
+            <div class="col col-50 text-left">
+                <button ng-click="$event.stopPropagation();sameCity()" ng-if="post.location"
+                    class="button button-clear button-dark icon-left ion-ios-location">
+                    <span>{{::post.location}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="tag-row" style="margin-left:12px">
+        <button class="button button-small button-stable tag"
+            ng-repeat="tag in post.tags track by $index"
+            ng-click="$event.stopPropagation();searchTag(tag)">
+            {{::tag}}
+        </button>
+    </div>
+    <div class="item item-divider"></div>
+</div>

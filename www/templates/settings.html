@@ -1,0 +1,50 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+      <div class="title">设置</div>
+  </div>
+  <ion-content class="has-header account">
+    <ion-list>
+      <ion-item class="item-divider"></ion-item>
+      <ion-item class="item item-icon-left item-icon-right" ng-click="$state.go('tab.like_posts')">
+          <i class="icon ion-ios-grid-view-outline"></i>
+          赞过帖子
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right" ng-click="$state.go('tab.favors')">
+          <i class="icon ion-ios-heart-outline"></i>
+          收藏商品
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item-divider"></ion-item>
+
+      <ion-item class="item item-icon-left item-icon-right" ng-click="$state.go('tab.profile')">
+          <i class="icon ion-ios-person-outline"></i>
+          个人资料
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+
+      <ion-item class="item item-icon-left item-icon-right" ng-click="$state.go('tab.address_list')">
+          <i class="icon ion-ios-location"></i>
+          收货地址
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+
+      <ion-item class="item-divider"></ion-item>
+
+      <ion-item class="item item-icon-right" ng-click="$state.go('tab.about')">
+          关于我们
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+
+      <ion-item class="item-divider">
+      </ion-item>
+
+      <ion-item class="item item-icon-right" ng-click="logout()">
+          登出
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item-divider"></ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

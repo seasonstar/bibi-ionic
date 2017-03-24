@@ -1,0 +1,65 @@
+<!-- 商品详情 -->
+<ion-view>
+    <div class="buttons">
+      <button class="button button-clear icon ion-ios-arrow-back item-header-button" ng-click="$ionicGoBack()"></button>
+      <button class="button button-clear icon ion-share item-header-button pull-right" ng-click="share(item)"></button>
+    </div>
+
+  <ion-content class="item-page has-footer">
+
+    <ion-slide-box delegate-handle="image-viewer"
+        ng-style="{'height':(images?'auto':'0px'),'padding-top':(images?'0':'100%')}">
+        <ion-slide ng-repeat="img in images">
+            <img ng-src="{{ img.url }}" ng-click="zoom(img.url)">
+        </ion-slide>
+    </ion-slide-box>
+
+    <ion-item class="item item-details">
+        <div class="item-title">
+            {{ item.title }}
+        </div>
+        <div class="product-prices">
+            <span class="curr-price">{{item.price | currency}}</span>
+            <del class="orig-price">{{item.orig_price | currency}}</del>
+            <div class="product-discount">{{item.discount}}% Off</div>
+        </div>
+    </ion-item>
+    <ion-item class="item item-details">
+        <div class="item-info">
+            <div class="item-info-table">
+                <dl class="item-info-field">
+                    <dt class="item-info-key">运费：</dt>
+                    <dd class="item-info-val">满 $79 免运费</dd>
+                </dl>
+                <dl class="item-info-field">
+                    <dt class="item-info-key">商品编号：</dt>
+                    <dd class="item-info-val">{{item.item_id}}</dd>
+                </dl>
+                <dl class="item-info-field">
+                    <dt class="item-info-key">商品重量：</dt>
+                    <dd class="item-info-val">{{item.weight}}g</dd>
+                </dl>
+                <dl class="item-info-field">
+                    <dt class="item-info-key">库存所在地：</dt>
+                    <dd class="item-info-val">中国</dd>
+                </dl>
+            </div>
+        </div>
+    </ion-item>
+    <ion-item class="item item-desc">
+        <p class="info-header">商品详情:</p>
+        <div class="description" ng-bind-html="item.detail"></div>
+    </ion-item>
+  </ion-content>
+  <div class="bar bar-footer bar-light">
+      <button class="button button-clear icon ion-ios-heart"
+          ng-class="{'like-icon button-assertive':item.is_favored, 'button-light':!item.is_favored}"
+          ng-click="favor(item.item_id)">
+          <span class="footer-price">{{item.price | currency}}</span>
+      </button>
+      <button class="button button-assertive button-cart icon ion-ios-cart"
+          ng-click="showSpecsBox()">
+          加入购物车
+      </button>
+  </div>
+</ion-view>

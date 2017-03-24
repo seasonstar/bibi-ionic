@@ -1,0 +1,68 @@
+{
+  "name": "angular-moment",
+  "version": "1.0.0-beta.3",
+  "main": "angular-moment.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/urish/angular-moment.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "moment": ">=2.8.0 <2.11.0"
+  },
+  "devDependencies": {
+    "bower": "1.6.3",
+    "coveralls": "2.11.4",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-jshint": "0.11.3",
+    "grunt-contrib-uglify": "0.9.2",
+    "grunt-karma": "0.12.1",
+    "grunt-ngdocs": "0.2.9",
+    "jasmine-core": "2.3.4",
+    "karma": "0.13.14",
+    "karma-coverage": "0.5.3",
+    "karma-jasmine": "0.3.6",
+    "karma-phantomjs-launcher": "0.2.1",
+    "load-grunt-tasks": "3.3.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "bower": "bower install",
+    "test": "grunt test",
+    "build": "grunt build"
+  },
+  "gitHead": "3b32174202a5b8923195d06ccef0a326ce9c20b3",
+  "description": "angular-moment ==============",
+  "bugs": {
+    "url": "https://github.com/urish/angular-moment/issues"
+  },
+  "homepage": "https://github.com/urish/angular-moment#readme",
+  "_id": "angular-moment@1.0.0-beta.3",
+  "_shasum": "70bcbe3dd88ce4489f187ebced120013b9c9971e",
+  "_from": "angular-moment@*",
+  "_npmVersion": "2.14.7",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "name": "urish",
+    "email": "uri@urish.org"
+  },
+  "maintainers": [
+    {
+      "name": "urish",
+      "email": "uri@urish.org"
+    }
+  ],
+  "dist": {
+    "shasum": "70bcbe3dd88ce4489f187ebced120013b9c9971e",
+    "size": 23432,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/angular-moment/download/angular-moment-1.0.0-beta.3.tgz"
+  },
+  "directories": {},
+  "publish_time": 1447200268390,
+  "_cnpm_publish_time": 1447200268390,
+  "_resolved": "https://registry.npm.taobao.org/angular-moment/download/angular-moment-1.0.0-beta.3.tgz"
+}

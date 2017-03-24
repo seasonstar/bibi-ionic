@@ -1,0 +1,38 @@
+<!-- 添加代寄物品 -->
+<ion-view>
+    <div class="bar bar-header">
+        <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+        <div class="title">添加代寄物品</div>
+        <button class="button button-clear button-dark" ng-click="addItem()">保存</button>
+    </div>
+
+    <ion-content class="has-header">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">物品名称</span>
+                <input type="text" ng-model="item.title">
+            </label>
+            <label class="item item-toggle">
+                敏感物品
+                <label class="toggle toggle-assertive">
+                    <input type="checkbox" ng-model="item.main_category">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">数量</span>
+                <input type="number" ng-model="item.quantity">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">申报价值(￥)</span>
+                <input type="number" ng-model="item.amount">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">备注</span>
+                <input type="text" placeholder="如颜色，尺寸" ng-model="item.remark">
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

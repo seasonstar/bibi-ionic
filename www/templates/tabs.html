@@ -1,0 +1,34 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="maybi-tabs tabs-icon-top tabs-color-active-positive {{hideTabs}}">
+
+  <!-- Explore Tab -->
+  <ion-tab title="美比" icon-off="ion-aperture" icon-on="ion-aperture" href="#/explore">
+    <ion-nav-view name="tab-explore"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Home Tab -->
+  <ion-tab title="购买" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" href="#/home">
+    <ion-nav-view name="tab-home"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Photo Tab -->
+  <ion-tab class="icon-center" title="" icon-off="icon-center" icon-on="icon-center" ng-click="togglePhotoModal()">
+    <ion-nav-view name="tab-capture"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Noti Tab -->
+  <ion-tab title="通知" icon-off="ion-ios-bell-outline" icon-on="ion-ios-bell" href="#/notification">
+    <ion-nav-view name="tab-noti"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="我的" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/account">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

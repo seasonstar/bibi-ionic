@@ -1,0 +1,39 @@
+<ion-view class="view-post">
+    <ion-header-bar>
+        <div class="title">通知</div>
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+
+    <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()"
+        spinner="spiral">
+    </ion-refresher>
+
+    <div class="list card notice" ng-repeat="notice in notices track by $index">
+        <div class="item item-avatar">
+            <img  ng-src="{{::notice.user.avatar_thumb}}" ng-click="zoom(notice.user.avatar_url)">
+            <h2>{{::notice.user.name}}
+                <div class="post-type notice">
+                    {{::notice.sub_title}}
+                </div>
+                <span class="item-note">{{::notice.created_at | amTimeAgo}}</span>
+            </h2>
+            <p class="post-body" ng-bind-html="notice.content | nl2br">
+        </div>
+    </div>
+    <div class="center-ico" ng-if="isEmpty()">
+        <i class="icon ion-ios-camera"></i>
+
+        <h1 >暂无动态</h1>
+    </div>
+    <ion-infinite-scroll
+        on-infinite="loadMore()"
+        distance="1"
+        spinner='spiral'
+        ng-if="moreDataCanBeLoaded()">
+    </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

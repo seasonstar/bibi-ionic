@@ -1,0 +1,88 @@
+<ion-modal-view class="modal-post">
+    <ion-header-bar>
+        <button class="button button-clear button-dark" ng-click="closePost()">取消</button>
+        <div class="title">发布信息</div>
+    </ion-header-bar>
+    <ion-scroll direction="y" style="right: 0;bottom: 0;left: 0;position: absolute;"
+        class="has-header has-footer">
+        <div class="list">
+            <div class="item item-input post-textarea wide-as-needed primary_image">
+                <a ng-click="editImage(form.primary_image)" style="bottom: 16px;">
+                    <div class="image" style="background-image: url({{form.primary_image}});
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;">
+                    </div>
+                </a>
+                <textarea ng-model="form.title" autofocus placeholder="描述一下吧"></textarea>
+            </div>
+            <div class="item item-divider"></div>
+
+            <ion-item class="item item-icon-left item-icon-right" ng-click="getLocation()">
+                <i class="icon ion-ios-location"></i>
+                发布于
+                <div class="item-note">
+                    <ion-google-place placeholder="输入地址或邮编"
+                        ng-model="form.location"
+                        geocode="form.geo"
+                        current-location="true" ></ion-google-place>
+                </div>
+                <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+            <div class="item item-icon-left item-icon-right item-tag" ng-model="form.tags" tag-type="{{form.type}}" tag-select>
+                <i class="icon ion-ios-pricetags energized"></i>
+                标签
+                <div class="item-note">
+                    添加
+                </div>
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+            <div class="tag-row" style="margin-left:12px">
+                <span class="tag selected"
+                    ng-repeat="tag in form.tags"
+                    ng-click="setOption(tag)">
+                    {{tag}} <i class="ion-ios-close-empty"></i>
+                </span>
+            </div>
+            <!--<div class="row tag-row">
+                <div class="col col-20 tag-text">推荐标签</div>
+                <div class="col col-80">
+                    <ion-scroll direction="x" scrollbar-x="false">
+                        <div style="width:400px">
+                            <span class="tag"
+                                ng-repeat="tag in ['买卖','服务','房屋','心情','晒', '约']"
+                                ng-click="setOption(tag)">
+                                {{tag}} <i class="ion-ios-plus-empty"></i>
+                            </span>
+                        </div>
+                    </ion-scroll>
+                </div>
+            </div>-->
+            <div class="item item-input item-stacked-label">
+                <div class="input-label">补充图片
+                    <div class="add-image"
+                        ng-click="increasePhotosModal()"
+                        ng-show="form.photos.length < 4">
+                        <i class="icon ion-ios-plus-empty"></i>
+                    </div>
+                </div>
+                <ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed">
+                    <a ng-repeat="photo in form.photos track by $index">
+                       <i class="icon ion-ios-close"
+                           ng-click="editAdditionImage($index)" ></i>
+                        <div class="image add" style="background-image: url({{photo}});
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    background-size: cover;">
+                        </div>
+                    </a>
+                </ion-scroll>
+            </div>
+        </div>
+
+    </ion-scroll>
+    <ion-footer-bar class="bar-assertive footer-button"
+        ng-click="submitPost(form)" keyboard-attach >
+        <div class="title">发表 <i class="icon ion-arrow-right-c"></i></div>
+    </ion-footer-bar>
+</ion-modal-view>

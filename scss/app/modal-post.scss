@@ -1,0 +1,325 @@
+/*   post   */
+
+$theme: #F23030;
+
+.maybi {
+  // Capture View
+
+  .item-divider {
+    min-height: 20px;
+
+  }
+  .input-label {
+    display: block;
+  }
+  .title.text-left {
+    text-align: left;
+  }
+
+  .modal-post {
+    font-size: 14px;
+    .list{
+        i.icon {
+            font-size: 25px;
+            padding: 0
+        }
+        .item-tag{
+            border-bottom: 0px;
+        }
+    }
+
+    .tag-row{
+        font-size:13px;
+        .tag-text{
+            text-align:center;
+            line-height:32px;
+        }
+
+        .tag{
+            padding: 3px 12px;
+            border: 1px solid #888;
+            border-radius: 18px;
+            margin: 2px 2px 8px 5px;
+            display: inline-block;
+
+            &.selected {
+                border: 1px solid $theme;
+                color: $theme;
+            }
+            &.unselect {
+                opacity: 0.5;
+            }
+        }
+    }
+    .item-stacked-label{
+        border-bottom:0px;
+    }
+    .add-image{
+        display:inline-block;
+        background: white;
+        border: 1px dashed #d8d8d8;
+        color: #d8d8d8;
+        text-align: center;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        line-height:26px;
+
+    }
+
+  }
+
+  .modal-capture {
+
+
+    .bar-filter{
+       display: inline-block;
+       margin: 0 auto;
+       width: 50%;
+    }
+    .footer-tab {
+        font-size: 18px;
+        display: block;
+        text-align: center;
+        line-height: 37px;
+        width: 100%;
+    }
+    .footer-tab.active{
+        border-bottom: 2px solid $theme;
+        color: $theme;
+    }
+
+    .bar-carousel{
+        height: 160px;
+        border-top: 1px solid #f8f8f8;
+
+    }
+    .has-carousel{
+        bottom:205px;
+    }
+
+    .bar-subfooter{
+        background: #f8f8f8;
+    }
+    .bar-footer{
+        background: #f2f2f2;
+    }
+    .photo-carousel{
+        margin-top: 16px;
+    }
+
+  }
+
+  .post-textarea{
+    border: 0px;
+    textarea {
+        height:128px;
+        resize: none;
+        font-size: 14px;
+        line-height: 18px;
+        margin: 0px 10px 0 28px;
+    }
+  }
+
+
+  .capture-photo {
+    display: block;
+    position: relative;
+
+    .image {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 300px;
+
+      &.disabled {
+        img, canvas {
+          opacity: 0;
+        }
+      }
+
+      img, canvas {
+        width: 100%;
+
+      }
+    }
+
+    ion-spinner {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      margin-top:-24px;
+      margin-left:-24px;
+      z-index: 3;
+      color: #fff;;
+
+      svg{
+        width:48px;
+        height:48px;
+      }
+    }
+  }
+
+  .wide-as-needed {
+    white-space: nowrap;
+    padding-right: 10px;
+
+    a {
+      display: inline-block;
+      position: relative;
+      margin: 10px 8px 16px 0;
+      font-size: 11px;
+      i {
+        position: absolute;
+        z-index: 10;
+        color: grey;
+        top: -10px;
+        left: 68px;
+      }
+
+      .image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0px;
+        background: #333;
+        height: 84px;
+        width: 84px;
+
+        img, canvas {
+          max-height: 84px;
+        }
+
+        &.add {
+            background: white;
+            border: 1px solid #d8d8d8;
+            color: #d8d8d8;
+            text-align: center;
+            vertical-align: middle;
+            height: 80px;
+            width: 80px;
+
+        }
+
+        &.disabled {
+          img, canvas {
+            opacity: 0;
+          }
+        }
+
+        i {
+            font-size: 40px;
+            line-height: 80px;
+            text-align: center;
+        }
+
+      }
+
+      p {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -28px;
+        color: #444;
+        right: 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/*   geolocation    */
+.ion-google-place-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+}
+
+input.ion-google-place[readonly]{
+    background-color: transparent;
+    cursor: text;
+    width: 100%;
+    height: 22px;
+    text-align: right;
+}
+
+.tag-modal {
+    .select-icon {
+        color: #888;
+        font-size: 28px;
+        &.selected{
+            color: $theme;
+            font-size: 28px;
+        }
+    }
+
+    .tag{
+        padding: 0px 12px;
+        border: 1px solid #d3d3d3;
+        border-radius: 18px;
+        margin-right: 8px;
+
+    }
+}
+
+.photo-tag{
+    text-align: center;
+    div {
+        margin: 0 auto;
+    }
+    .tag{
+        text-align: center;
+        width: 66px;
+        height: 66px;
+        line-height: 66px;
+        border-radius: 33px;
+        color: white;
+        border: 2px solid white;
+        &.tag-service{
+            background: url(../img/icons/tag-service.png) center no-repeat;
+            background-size: 66px;
+        }
+        &.tag-show{
+            background: url(../img/icons/tag-show.png) center no-repeat;
+            background-size: 66px;
+        }
+        &.tag-trade{
+            background: url(../img/icons/tag-trade.png) center no-repeat;
+            background-size: 66px;
+        }
+        &.selected{
+            border: 4px solid white;
+            box-shadow: 1px 1px 3px #888;
+        }
+    }
+    p.selected{
+        color: $theme;
+    }
+    .send {
+        position:relative;
+        width:150px;
+        height:35px;
+        line-height:35px;
+        background: #fff;
+        border-radius:5px; /* 圆角 */
+        margin:12px auto 0;
+        color: #888;
+
+        .arrow {
+            position:absolute;
+            top:5px;
+            right:-16px; /* 圆角的位置需要细心调试哦 */
+            width:0;
+            height:0;
+            font-size:0;
+            border:solid 8px;
+            border-color:#f8f8f8 #f8f8f8 #f8f8f8 #fff;
+        }
+    }
+
+}

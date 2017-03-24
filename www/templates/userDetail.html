@@ -1,0 +1,66 @@
+<!-- 用户详情 -->
+<ion-view>
+    <div class="buttons">
+        <button class="button button-clear icon ion-ios-arrow-back account-setting-btn pull-left" ng-click="$ionicGoBack()"></button>
+    </div>
+    <div class="avatar-section">
+        <a class="logo"
+            style="background: url({{::user.avatar_url}}) center no-repeat; background-size: cover">
+        </a>
+        <div class="avatar-wrap">
+            <p><img class="avatar" ng-src="{{::user.avatar_url}}" alt=""></p>
+            <p class="user">{{::user.name}} <follow-btn user="user"></p>
+        </div>
+        <div class="social-btns">
+            <a ng-href="#/userList/{{::user.id}}/followers">
+                <strong>{{user.num_followers}} </strong>粉丝
+            </a>
+            <a ng-href="#/userList/{{::user.id}}/followings">
+                <strong>{{user.num_followings}} </strong>关注
+            </a>
+        </div>
+    </div>
+
+    <ion-content class="account-view" overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5">
+      <div class="button-bar bar-light switch-bar">
+          <button class="button button-icon" ng-click="switchListStyle('grid')"
+              ng-class="gridStyle=='grid'? 'active': ''">
+              <i class="icon ion-grid"></i>
+          </button>
+          <button class="button button-icon" ng-click="switchListStyle('list')"
+              ng-class="gridStyle=='list'? 'active': ''">
+              <i class="icon ion-navicon"></i>
+          </button>
+      </div>
+
+      <div class="view-post">
+        <ion-refresher
+            pulling-text="下拉刷新..."
+            on-refresh="doRefresh()"
+            spinner="spiral">
+        </ion-refresher>
+        <div class="list card " ng-if="gridStyle == 'list'"
+            ng-repeat="post in posts track by $index">
+            <photo-list post="post" with-affix="false"></photo-list>
+        </div>
+        <div class="" ng-if="gridStyle=='grid'">
+            <div class="col col-33 grid-image" ng-repeat="post in posts track by $index">
+                <img ng-src="{{::post.small_url}}" ng-click="zoom(post.primary_image)">
+            </div>
+        </div>
+
+        <div class="center-ico" ng-if="isEmpty()">
+            <i class="icon ion-ios-camera"></i>
+
+            <h1 >这人还没发布过</h1>
+        </div>
+
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1"
+            spinner='spiral'
+            ng-if="moreDataCanBeLoaded()">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+{
+  "name": "maybi-ionic",
+  "app_id": "8c1d6a2a",
+  "gulpStartupTasks": [
+    "sass",
+    "views",
+    "ng_annotate",
+    "useref",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

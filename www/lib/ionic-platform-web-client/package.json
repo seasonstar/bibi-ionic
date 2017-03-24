@@ -1,0 +1,159 @@
+{
+  "name": "ionic-platform-web-client",
+  "version": "0.2.1",
+  "description": "Ionic platform web client",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driftyco/ionic-platform-web-client.git"
+  },
+  "keywords": [
+    "Ionic",
+    "ionic",
+    "platform",
+    "web",
+    "client"
+  ],
+  "author": "Ionic",
+  "contributors": [
+    "Eric Bobbitt <eric@drifty.com>",
+    "William Pelrine <rudy@drifty.com>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/driftyco/ionic-platform-web-client/issues"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "globals": {
+      "Ionic": true,
+      "angular": true,
+      "Connection": true,
+      "PushNotification": true,
+      "IonicDeploy": true
+    },
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-extra-semi": 2,
+      "valid-jsdoc": [
+        2,
+        {}
+      ],
+      "curly": 2,
+      "dot-notation": 2,
+      "eqeqeq": 2,
+      "no-eval": 2,
+      "no-process-env": 2,
+      "no-return-assign": 2,
+      "no-script-url": 2,
+      "no-self-compare": 2,
+      "no-sequences": 2,
+      "radix": 2,
+      "wrap-iife": [
+        2,
+        "inside"
+      ],
+      "array-bracket-spacing": [
+        2,
+        "never"
+      ],
+      "block-spacing": [
+        2,
+        "always"
+      ],
+      "brace-style": [
+        2,
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "comma-style": [
+        2,
+        "last"
+      ],
+      "camelcase": [
+        2,
+        {
+          "properties": "always"
+        }
+      ],
+      "key-spacing": [
+        2,
+        {
+          "beforeColon": false,
+          "afterColon": true
+        }
+      ],
+      "func-style": [
+        2,
+        "declaration"
+      ],
+      "linebreak-style": [
+        2,
+        "unix"
+      ],
+      "new-cap": 2,
+      "new-parens": 2,
+      "no-mixed-spaces-and-tabs": 2,
+      "no-trailing-spaces": 2,
+      "no-spaced-func": 2,
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "quote-props": 2,
+      "semi": [
+        2,
+        "always"
+      ],
+      "space-after-keywords": 2,
+      "space-before-blocks": 2,
+      "space-before-function-paren": [
+        2,
+        "never"
+      ],
+      "space-infix-ops": 2,
+      "space-return-throw-case": 2,
+      "space-unary-ops": 2,
+      "spaced-comment": [
+        2,
+        "always"
+      ]
+    }
+  },
+  "homepage": "https://github.com/driftyco/ionic-platform-web-client#readme",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babelify": "^6.2.0",
+    "browser-request": "^0.3.3",
+    "browserify": "^11.0.1",
+    "del": "^2.0.2",
+    "es6-promise": "^3.0.2",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-footer": "^1.0.4",
+    "gulp-header": "^1.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^1.4.1",
+    "gulp-util": "^2.2.16",
+    "gulp-watch": "^0.6.5"
+  }
+}

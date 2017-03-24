@@ -1,0 +1,289 @@
+$size: 35px;
+
+@mixin animate($animation, $duration, $delay ) {
+  // Opera
+  -o-animation-name: $animation;
+  -o-animation-delay: $delay;
+  -o-animation-duration: $duration;
+  -o-animation-timing-function: ease;
+  -o-animation-fill-mode: both;
+
+  // Mozilla
+  -moz-animation-name: $animation;
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-timing-function: ease;
+  -moz-animation-fill-mode: both;
+
+  // Safari
+  -webkit-animation-name: $animation;
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: both;
+  -webkit-backface-visibility: hidden;
+
+  // Chrome
+  animation-name: $animation;
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+
+  backface-visibility: hidden;
+}
+
+
+/*
+    Example usage:
+    @include animation(fadeInDown, 1s, .5s)
+ */
+
+$animate1: 'zoomInLeft';
+
+.item-animate1 {
+
+  &.ng-enter {
+    @include animate($animate1, 1s, .5s);
+  }
+
+  &.ng-enter-stagger {
+    -webkit-animation-delay: 100ms;
+    animation-delay: 100ms;
+
+    /* override to make sure it's not inherited from other styles */
+    -webkit-animation-duration: 0s;
+    animation-duration: 0s;
+
+  }
+}
+
+$animate2: 'fadeInDown';
+
+.item-animate2 {
+
+  &.ng-enter {
+    -webkit-animation: $animate1 1s;
+    animation: $animate1 1s;
+  }
+
+  &.ng-enter-stagger {
+    -webkit-animation-delay: 200ms;
+    animation-delay: 200ms;
+
+    /* override to make sure it's not inherited from other styles */
+    -webkit-animation-duration: 0;
+    animation-duration: 0;
+
+  }
+}
+
+
+.button-fab {
+
+  &.ng-enter {
+    @include animate(fadeInUp, 1s, 0s);
+  }
+
+ &.ng-leave {
+    @include animate(fadeOutDown, .5s, 0.5s);
+  }
+
+}
+.step1 {
+  @include animate(fadeInDown, 1s, 0s);
+
+  &.ng-leave,&.ng-enter-leave, &.ng-hide {
+    @include animate(fadeOut, 1s, 0.5s);
+  }
+}
+
+.step2 {
+  @include animate(fadeInUp, 1s, 0.5s);
+
+  &.ng-leave,&.ng-enter-leave, &.ng-hide {
+    @include animate(fadeOut, 1s, 0.5s);
+  }
+}
+
+.step3 {
+  @include animate(fadeInUp, 1s, 1s);
+}
+
+
+.view-intro {
+    ion-footer-bar {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 0 10px;
+      height: 60px;
+    }
+    .scroll-content {
+      background-image: url(../img/intro/bg.jpg);
+      background-size: cover;
+      background-color: #F01122;
+      height: 100%;
+      color: #fff;
+      margin: 0;
+
+      .button-fab {
+        border-radius: 50%;
+        min-width: $size;
+        min-height: $size;
+        width: $size;
+        height: $size;
+        border: none;
+        transition: all 1s ease;
+        &.left {
+          left: 10px !important;
+          position: absolute;
+          bottom: 20px;
+          width: 10px !important;
+          box-shadow: 4px 5px 6px 0px rgba(0,0,0,.4);
+        }
+        &.left:active {
+            box-shadow: 4px 5px 6px 5px rgba(0,0,0,.4);
+        }
+        &.right {
+          right: 10px !important;
+          position: absolute;
+          bottom: 20px;
+          width: 10px !important;
+          box-shadow: -2px 5px 6px 0px rgba(0,0,0,.4);
+        }
+        &.right:active {
+            box-shadow: -2px 5px 6px 5px rgba(0,0,0,.4);
+        }
+      }
+      .intro-slider {
+        display: block;
+        height: 100%;
+        .content {
+          position: relative;
+          height: 100%;
+          .last {
+            .logo2 {
+              //position: absolute;
+              display: block;
+              margin: 90px auto 20px auto;
+              width: 80px;
+              //height: 100px;
+              //top: 30%;
+              //left: 0;
+              //right: 0;
+              img {
+                //position: absolute;
+                //top: 0;
+                //left: 0;
+                width: 100%;
+                border-radius: 18px;
+              }
+              span.icon2-logo {
+                font-size: 45pt;
+                color: #fff;
+                display: block;
+                margin: 22px;
+                position: absolute;
+                top: 0;
+                left: 20%;
+              }
+            }
+            button.button {
+              //position: absolute;
+              color: #fff;
+              border: 1px solid #fff;
+              //left: 0;
+              //right: 0;
+              margin: 50px auto 0 auto;
+              width: 90%;
+              bottom: 10%;
+            }
+            p{
+              text-align:center;
+              font: 500 20px Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+              //  animation
+              @include animate(fadeInDown, 1s, .5s);
+            }
+          }
+          span.top {
+            display: block;
+            padding: 0;
+            margin: 10px 15px;
+            height: 14%;
+            position: relative;
+            h2 {
+              display: block;
+              position: absolute;
+              text-align: center;
+              color: #fff;
+              bottom: 25%;
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              font-size: 16pt;
+              line-height: 16pt;
+            }
+
+            //  animation
+            @include animate(fadeInDown, 1s, .5s);
+          }
+          .phone {
+            position: relative;
+            width: 80%;
+            height: 736px;
+            max-width: 414px;
+            margin: 0 auto;
+            @include animate(fadeInUp, 1s, 0.1s);
+            &.iphone {
+              background-image: url(../img/intro/devices/iphone.png);
+              background-repeat: no-repeat;
+              background-size: contain;
+              width: 98%;
+              max-width: 407px;
+              min-width: 315px;
+              img {
+                display: block;
+                margin: 0 auto;
+                position: relative;
+                width: 79%;
+                top: 11.1%;
+              }
+            }
+            &.android {
+              background-image: url(../img/intro/devices/android.png);
+              background-repeat: no-repeat;
+              background-size: contain;
+              width: 90%;
+              max-width: 340px;
+              min-width: 330px;
+              margin-top: 10px;
+              img {
+                display: block;
+                margin: 0 auto;
+                position: relative;
+                width: 90%;
+                top: 7.1%;
+              }
+            }
+          }
+        }
+        .slider {
+          display: block;
+          height: 100%;
+          padding-top: 30px;
+        }
+        .slider-pager,
+        button.button {
+          @include animate(fadeInDown, 1s, 0.1s);
+        }
+        .slider-pager {
+          top: 15px;
+
+          //  animation
+          span.slider-pager-page {
+            top: 15px;
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }

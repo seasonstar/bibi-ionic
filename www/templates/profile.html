@@ -1,0 +1,25 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+      <div class="title">个人资料</div>
+  </div>
+  <ion-content class="has-header account">
+    <ion-list>
+
+      <ion-item class="item-divider">
+      </ion-item>
+
+      <ion-item class="item item-icon-right" ng-click="togglePhotoModal()">
+          上传头像
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item class="item item-icon-right"  ng-click="setUsername()">
+          用户名
+          <span class="item-note">
+              {{user.getUser().name}}
+          </span>
+          <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

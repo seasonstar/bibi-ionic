@@ -1,0 +1,45 @@
+<ion-view class="view-intro">
+
+    <ion-content scroll="false">
+        <div class="intro-slider">
+            <ion-slide-box active-slide="slideIndex" show-pager="true" on-slide-changed="slideChanged($index)">
+
+                <ion-slide ng-repeat="item in slides">
+
+                    <div class="content" ng-if="$index == slideIndex">
+                        <span class="top"><h2>{{ item.top }}</h2></span>
+
+                        <div class="phone {{ device }}">
+                            <img ng-src="{{ item.img }}">
+                        </div>
+                    </div>
+
+                </ion-slide>
+
+                <ion-slide>
+                    <div class="content" ng-if="slides.length == slideIndex">
+
+                        <div class="last">
+                            <div class="logo2 step1">
+                                <img src="img/icon.jpg">
+                                <span class="icon2-logo"></span>
+                            </div>
+
+                            <p>比邻中国的海外生活</p>
+
+                            <button class="button button-block button-clear step2" ui-sref="tab.explore" ng-click="goHome()">开始</button>
+                        </div>
+
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+
+        </div>
+
+        <!--
+        <button class="button button-positive button-fab left" ng-if="slideIndex" ng-click="previous()"><i class="icon ion-ios-arrow-left"></i></button>
+
+        <button class="button button-positive button-fab right" ng-hide="slideIndex === slides.length" ng-click="next()"><i class="icon ion-ios-arrow-right"></i></button>
+        -->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,70 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+      <div class="title">物流详情</div>
+  </div>
+
+  <ion-content class="has-header">
+
+<section class="clearfix" ng-cloak>
+<div class="logistic-row">
+    <span class="">
+        包裹编号：{{logistic.partner_tracking_no}}
+    </span>
+    <span class="pull-right">
+        <ul class="logistic-nav">
+            <li class=""
+                ng-repeat="lo in order.logistics track by $index"
+                ng-if="order.logistics.length > 1"
+                ng-class="{'current': currTab==$index}"
+                ng-click="goTab($index, lo)">
+                包裹{{$index+1}}</li>
+        </ul>
+    </span>
+</div>
+<div class="">
+    <table class="table ngCart cart-table">
+        <tbody>
+        <tr ng-repeat="entry in logistic.entries track by $index">
+            <td class="img-cell">
+                <div>
+                    <img ng-src="{{entry.spec.images[0]}}">
+                </div>
+            </td>
+            <td class="info-cell">
+                <div>{{ entry.item.title }}</div>
+                <div>
+                    <span ng-repeat="(k, v) in entry.spec.attributes">
+                        {{ngCart.attrMap[k]}}: {{v}}
+                    </span>
+                </div>
+                <div class="btn-group cart-btn">
+                    <span>数量: {{ entry.quantity | number }}</span>
+                </div>
+            </td>
+            <td class="price-cell">{{ entry.amount_usd | currency }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="logistic-row">
+    <ul class="progress-indicator">
+        <li ng-class="{'completed': allStatus.indexOf(logistic.current_status) >= $index}"
+             ng-repeat="status in logistic.all_status">
+            <span class="bubble"></span>
+            <div class="logistic-status">{{status.desc}}</div>
+        </li>
+    </ul>
+</div>
+<div class="logistic-row">
+    <ul class="tracking">
+        <li ng-repeat="h in logistic.history | reverse">
+            <div class="">{{h.desc}}</div>
+            <div class="time">{{h.time}}</div>
+        </li>
+    </ul>
+</div>
+</section>
+
+  </ion-content>
+</ion-view>

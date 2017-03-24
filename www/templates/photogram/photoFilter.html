@@ -1,0 +1,12 @@
+<div>
+    <div class="capture-photo">
+        <img ng-src="{{image}}" id="original-image" style="display:none">
+        <div vin
+            filter="'normal'"
+            class="image"
+            ng-class="{disabled: loading}"
+            name="vin-image"
+            image="image"></div>
+        <ion-spinner ng-show="loading"></ion-spinner>
+    </div>
+</div>

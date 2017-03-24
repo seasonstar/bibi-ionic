@@ -1,0 +1,48 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeSpecsBox()">关闭</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="topic-create">
+    <ion-item class="item item-thumbnail-left">
+        <img ng-src="{{selectedSpec.images[0]}}">
+        <h2>{{item.title}}</h2>
+        <p>{{selectedSpec.price | currency}} x {{quantity}}</p>
+        <div class="footer-price">{{subTotal(selectedSpec.price, quantity) | currency}}</div>
+    </ion-item>
+    <ion-item class="spec-options">
+        <div class="spec-options-table">
+            <dl class="spec-info-field" ng-repeat="(k, v) in item.attributes_desc">
+                <dt class="spec-info-key">{{v}}</dt>
+                <dd class="spec-info-val">
+                <span class="spec-attr"
+                    ng-class="{'selected': attr==selectedAttr[k],
+                            'disabled': remainSpec.indexOf(attr) == -1}"
+                    ng-click="setAttr(k, attr)"
+                    ng-repeat="attr in attrChoices[k]">
+                        {{attr}}
+                    </span>
+                </dd>
+            </dl>
+            <dl class="spec-info-field">
+                <dt class="spec-info-key">数量：</dt>
+                <dd class="spec-info-val">
+                    <div class="btn-group">
+                        <button class="btn del-num"
+                            ng-click="setQuantity(-1, true)">-</button>
+                        <button class="btn num">{{quantity}}</button>
+                        <button class="btn add-num"
+                            ng-click="setQuantity(1, true)">+</button>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </ion-item>
+  </ion-content>
+
+    <ion-footer-bar  class="bar-assertive footer-button" >
+        <ngcart-addtocart id="{{selectedSpec.sku}}" name="{{item.title}}" price="{{selectedSpec.price}}" quantity="{{quantity}}" quantity-max="5" data="selectedSpecData">加入购物车</ngcart-addtocart>
+    </ion-footer-bar>
+
+</ion-modal-view>

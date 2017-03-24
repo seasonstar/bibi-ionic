@@ -1,0 +1,5 @@
+<div class="follow_btn" ng-if="currentUserID != user.id">
+    <button class="button button-small button-outline"
+        ng-class="user.is_following?'' :'button-energized'" ng-click="follow()">{{user.is_following? "已关注":"关注"}}</button>
+
+</div>

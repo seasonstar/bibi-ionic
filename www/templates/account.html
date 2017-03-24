@@ -1,0 +1,101 @@
+<ion-view>
+    <div class="buttons">
+        <button class="button button-clear icon ion-ios-gear account-setting-btn pull-right"
+            ng-click="$state.go('tab.settings')" ng-if="user.getUser().name"></button>
+    </div>
+    <div class="avatar-section">
+        <div ng-if="user.getUser().name">
+            <a class="logo" ng-click="$state.go('tab.profile')"
+                style="background: url({{user.getUser().avatar_url}}) center no-repeat; background-size: cover">
+            </a>
+            <div class="avatar-wrap">
+                <p><img class="avatar" ng-src="{{user.getUser().avatar_url}}" alt=""></p>
+                <p ng-if="user.getUser().name" class="user">{{user.getUser().name}}</p>
+            </div>
+            <div class="social-btns">
+                <a ng-href="#/myuserList/{{user.getUser().id}}/followers">
+                    <strong>{{user.getUser().num_followers}} </strong>粉丝
+                </a>
+                <a ng-href="#/myuserList/{{user.getUser().id}}/followings">
+                    <strong>{{user.getUser().num_followings}} </strong>关注
+                </a>
+            </div>
+        </div>
+        <div ng-click="showAuthBox()" ng-if="!user.getUser().name">
+            <a
+                class="logo"
+                style="background: url(img/b7.jpg) center no-repeat; background-size: cover">
+            </a>
+            <div class="avatar-wrap">
+                <p><img class="avatar" ng-src="{{user.getUser().avatar_url}}" alt=""></p>
+                <p ng-if="!user.getUser().name" class="login-btn">登陆</p>
+            </div>
+         </div>
+
+    </div>
+
+  <ion-content class="account-view" style="top:250px" overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5">
+    <ion-list>
+      <div class="button-bar bar-light icon-top">
+          <button class="button button-icon" ng-click="$state.go('tab.cart')">
+              <i class="icon ion-ios-cart"></i>
+              购物车
+          </button>
+          <button class="button button-icon" ng-click="$state.go('tab.orders')">
+              <i class="icon ion-ios-paper-outline"></i>
+              订单
+          </button>
+          <button class="button button-icon" ng-click="$state.go('tab.coupons')">
+              <i class="icon ion-ios-pricetags"></i>
+              折扣券
+          </button>
+      </div>
+
+      <div class="item item-divider"></div>
+
+      <div class="button-bar bar-light switch-bar">
+          <button class="button button-icon" ng-click="switchListStyle('grid')"
+              ng-class="gridStyle=='grid'? 'active': ''">
+              <i class="icon ion-grid"></i>
+          </button>
+          <button class="button button-icon" ng-click="switchListStyle('list')"
+              ng-class="gridStyle=='list'? 'active': ''">
+              <i class="icon ion-navicon"></i>
+          </button>
+      </div>
+
+    </ion-list>
+
+    <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()"
+        spinner="spiral">
+    </ion-refresher>
+    <div class="view-post">
+        <div class="list card " ng-if="gridStyle == 'list'"
+            ng-repeat="post in posts track by $index">
+            <photo-list post="post" with-affix="false"></photo-list>
+        </div>
+        <div class="" ng-if="gridStyle=='grid'">
+            <div class="col col-33 grid-image" ng-repeat="post in posts track by $index">
+                <img ng-src="{{::post.small_url}}" ng-click="zoom(post.primary_image)">
+            </div>
+        </div>
+
+        <div class="center-ico" ng-if="isEmpty()" style=" margin-top: 20px;">
+            <i class="icon ion-ios-camera" style="font-size: 80pt;"
+                ng-click="togglePhotoModal()"></i>
+
+            <h1 >发布一条心情<br>出来露个脸呗</h1>
+        </div>
+
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1"
+            spinner='spiral'
+            ng-if="moreDataCanBeLoaded()">
+        </ion-infinite-scroll>
+    </div>
+
+  </ion-content>
+</ion-view>

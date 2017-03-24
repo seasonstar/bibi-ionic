@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+    <title></title>
+
+    <!-- build:css dist_css/styles.css -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <!-- endbuild -->
+
+    <!-- build:js dist_js/vendor.js -->
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/moment/min/moment-with-locales.min.js"></script>
+    <script src="lib/angular-moment/angular-moment.min.js"></script>
+    <script src="lib/ion-bottomSheet/bottomSheet.js"></script>
+    <script src="lib/jr-crop/dist/jr-crop.js"></script>
+    <script src="lib/vintageJS/dist/vintage.js"></script>
+    <script src="lib/aws-sdk/dist/aws-sdk.min.js"></script>
+    <script src="lib/ion-affix/ion-affix.js"></script>
+    <script src="lib/ionic-native-transitions/dist/ionic-native-transitions.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <!-- if you dont use ionic-platform-web-client, you need to uncomment cordova.js -->
+    <!--<script src="cordova.js"></script>-->
+    <script src="lib/paypal-mobile-js-helper.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js dist_js/app.js -->
+    <script src="dist/dist_js/app/app.js"></script>
+    <script src="dist/dist_js/app/controllers.js"></script>
+    <script src="dist/dist_js/app/services.js"></script>
+    <script src="dist/dist_js/app/directives.js"></script>
+    <script src="dist/dist_js/app/constants.js"></script>
+    <script src="dist/dist_js/app/filters.js"></script>
+    <script src="dist/dist_js/app/templates.js"></script>
+    <script src="dist/dist_js/app/photo.js"></script>
+    <script src="dist/dist_js/app/photogram.js"></script>
+    <script src="dist/dist_js/app/geo.js"></script>
+    <script src="dist/dist_js/app/tags.js"></script>
+    <!-- endbuild -->
+
+  </head>
+  <body ng-app="maybi" class="maybi" ng-strict-di>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

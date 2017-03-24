@@ -1,0 +1,27 @@
+<div class="photo-tag">
+    <div class="send">
+        <div class="arrow"></div>
+        选择下面一种标签..
+    </div>
+    <div class="row">
+        <div class="col col-33" ng-click="selectType('SERVICE')">
+            <div tag-select tag-type="SERVICE" ng-model="tags"
+                class="tag tag-service"
+                ng-class="type=='SERVICE'? 'selected':'unselect'"></div>
+            <p ng-class="type=='SERVICE'? 'selected':''">服务</p>
+        </div>
+        <div class="col col-33" ng-click="selectType('SHOW')">
+            <div tag-select tag-type="SHOW" ng-model="tags"
+                class="tag tag-show"
+                ng-class="type=='SHOW'? 'selected':'unselect'"></div>
+            <p ng-class="type=='SHOW'? 'selected':''">心情</p>
+        </div>
+        <div class="col col-33" ng-click="selectType('TRADE')">
+            <div tag-select tag-type="TRADE" ng-model="tags"
+                class="tag tag-trade"
+                ng-class="type=='TRADE'? 'selected':'unselect'"></div>
+            <p ng-class="type=='TRADE'? 'selected':''">买卖</p>
+        </div>
+
+    </div>
+</div>

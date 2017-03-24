@@ -1,0 +1,14 @@
+<ion-scroll direction="x" scrollbar-x="false" class="wide-as-needed  photo-carousel">
+    <a ng-click="applyFilter('normal')" >
+        <div class="image">
+            <img ng-src="img/vintage/normal.jpg" id="normal" >
+        </div>
+        <p>原图</p>
+    </a>
+    <a ng-repeat="(filter, cn) in filters" ng-click="applyFilter(filter)" >
+        <div class="image">
+            <img ng-src="img/vintage/{{filter}}.jpg" id="{{filter}}" >
+        </div>
+        <p>{{ cn }}</p>
+    </a>
+</ion-scroll>

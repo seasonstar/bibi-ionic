@@ -1,0 +1,10 @@
+<div>
+    <div ng-style='expandable&&!expanded? showLessStyle : ""'>
+        <p ng-bind-html="title||'' | nl2br"></p>
+    </div>
+    <div ng-if="expandable" class="expand-btn">
+        <button class="button button-small button-clear button-dark "
+           ng-click='$event.stopPropagation();toggle()'>{{expanded? '收起':'展开全文'}}
+        </button>
+    </div>
+</div>

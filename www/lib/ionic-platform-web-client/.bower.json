@@ -1,0 +1,29 @@
+{
+  "name": "ionic-platform-web-client",
+  "version": "0.2.1",
+  "homepage": "https://github.com/driftyco/ionic-platform-web-client",
+  "authors": [
+    "Eric Bobbitt <eric@drifty.com",
+    "William Pelrine <rudy@drifty.com>"
+  ],
+  "description": "Ionic platform web client",
+  "main": "dist/ionic.io.bundle.min.js",
+  "license": "Apache2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.1",
+    "commit": "a9f03a5a7bc134202705cddac224767c214f4841"
+  },
+  "_source": "git://github.com/driftyco/ionic-platform-web-client.git",
+  "_target": "~0.2.1",
+  "_originalSource": "ionic-platform-web-client",
+  "_direct": true
+}

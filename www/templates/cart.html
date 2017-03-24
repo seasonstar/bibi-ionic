@@ -1,0 +1,104 @@
+<!-- 购物车 -->
+
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear button-dark icon ion-ios-arrow-back"  ng-click="$state.go('tab.home')"></button>
+      <div class="title">购物车</div>
+      <button class="button button-clear button-dark icon" ng-class="editShown?'ion-ios-color-wand-outline': 'ion-ios-trash-outline'"  ng-click="toggleEditShown()"></button>
+
+  </div>
+  <ion-content class="has-header has-footer has-subfooter">
+
+    <div class="center-ico"  ng-show="ngCart.getTotalItems() === 0">
+        <i class="icon ion-ios-cart-outline"></i>
+        <h1 >购物车为空
+        </h1>
+    </div>
+
+    <div ng-show="ngCart.getTotalItems() > 0">
+
+        <table class="table ngCart cart-table">
+            <thead>
+            <tr>
+                <td class="check-cell" ng-click="selectAllEntries()">
+                    <i class="icon select-icon"
+                        ng-class=" isSelectedAll? 'ion-ios-checkmark selected':'ion-ios-circle-outline'"
+                        ng-hide="editShown">
+                    </i>
+                </td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="item in ngCart.getCart().items track by $index">
+                <td class="check-cell">
+                    <span class="close-icon" ng-show="editShown" ng-click="ngCart.removeItemById(item.getId())">
+                    </span>
+                    <i class="icon select-icon"
+                        ng-class=" ngCart.getSelectedItemById(item.getId())? 'ion-ios-checkmark selected':'ion-ios-circle-outline'"
+                        ng-hide="editShown"
+                        ng-click="selectEntry(item.getId())">
+                    </i>
+
+                </td>
+
+                <td class="img-cell">
+                    <div>
+                        <a ng-href="#/item/{{item.getData().item.item_id}}">
+                            <img ng-src="{{item.getData().spec.images[0]}}">
+                        </a>
+                    </div>
+                </td>
+                <td class="info-cell">
+                    <div>{{ item.getName() }}</div>
+                    <div>
+                        <span ng-repeat="(k, v) in item.getData().spec.attributes">
+                            {{ngCart.attrMap[k]}}: {{v}}
+                        </span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn del-num"
+                            ng-class="{'disabled':item.getQuantity()==1}"
+                            ng-click="setQuantity(item, -1, true)">-</button>
+                        <button class="btn num">{{ item.getQuantity() | number }}</button>
+                        <button class="btn add-num"
+                            ng-click="setQuantity(item, 1, true)">+</button>
+                    </div>
+                </td>
+                <td class="price-cell">{{ item.getTotal() | currency }}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr ng-show="ngCart.getShipping()">
+                <td></td>
+                <td></td>
+                <td>Shipping:</td>
+                <td>{{ ngCart.getShipping() | currency }}</td>
+            </tr>
+            <tr>
+                <td class="check-cell">
+                </td>
+                <td></td>
+                <td colspan="2" class="total">商品总价: {{ ngCart.totalCost() | currency }}</td>
+            </tr>
+            </tfoot>
+
+        </table>
+    </div>
+
+  </ion-content>
+    <div class="bar bar-subfooter bar-stable">
+        <a class="button button-clear">
+            总价:  <span class="footer-price"> {{ ngCart.totalCost() |currency}}</span>
+        </a>
+        <button class="button button-assertive button-cart pull-right" ng-click="$state.go('tab.checkout')">
+            结算({{ngCart.getTotalSelectedItems()}})
+
+        </button>
+    </div>
+
+</ion-view>

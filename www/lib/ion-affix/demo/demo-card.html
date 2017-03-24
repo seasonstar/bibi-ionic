@@ -1,0 +1,145 @@
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2015 - <Ali Ok>
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  ~ THE SOFTWARE.
+  -->
+
+<html ng-app="ion-affix-demo">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>ion-affix</title>
+
+    <link href="../bower_components/ionic/css/ionic.min.css" rel="stylesheet">
+    <script src="../bower_components/ionic/js/ionic.bundle.min.js"></script>
+
+    <script src="../ion-affix.js"></script>
+
+    <script>
+        angular.module('ion-affix-demo', ['ionic', 'ion-affix']);
+    </script>
+
+</head>
+
+<body>
+
+<ion-header-bar align-title="left" class="bar-positive">
+    <h1 class="title">ion-affix cards demo</h1>
+</ion-header-bar>
+
+<!-- or <ion-scroll> -->
+<ion-content scroll-event-interval="5">
+
+    <div class="list card">
+
+        <div class="item item-avatar" ion-affix data-affix-within-parent-with-class="card">
+            <img src="mcfly.jpg">
+
+            <h2>Marty McFly</h2>
+
+            <p>November 05, 1955</p>
+        </div>
+
+        <div class="item item-body">
+            <img class="full-image" src="delorean.jpg">
+
+            <p>
+                This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                the content is from a card-body consisting of an image and paragraph text. The footer
+                consists of tabs, icons aligned left, within the card-footer.
+            </p>
+
+            <p>
+                <a href="#" class="subdued">1 Like</a>
+                <a href="#" class="subdued">5 Comments</a>
+            </p>
+        </div>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+                <i class="icon ion-thumbsup"></i>
+                Like
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-chatbox"></i>
+                Comment
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-share"></i>
+                Share
+            </a>
+        </div>
+    </div>
+
+    <!--======================= Item 2 =====================-->
+    <div class="list card">
+
+        <div class="item item-avatar" ion-affix data-affix-within-parent-with-class="card">
+            <img src="brown.jpg">
+
+            <h2>Dr. Emmett Brown</h2>
+
+            <p>November 05, 1955</p>
+        </div>
+
+        <div class="item item-body">
+            <img class="full-image" src="delorean.jpg">
+
+            <p>
+                This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                the content is from a card-body consisting of an image and paragraph text. The footer
+                consists of tabs, icons aligned left, within the card-footer.
+            </p>
+
+            <p>
+                <a href="#" class="subdued">1 Like</a>
+                <a href="#" class="subdued">5 Comments</a>
+            </p>
+        </div>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+                <i class="icon ion-thumbsup"></i>
+                Like
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-chatbox"></i>
+                Comment
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-share"></i>
+                Share
+            </a>
+        </div>
+    </div>
+
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+    <p>Some content on the bottom</p>
+
+</ion-content>
+</body>
+</html>

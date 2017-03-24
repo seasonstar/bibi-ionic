@@ -1,0 +1,168 @@
+<!-- 购物车 -->
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back button-dark"
+          ng-click="$state.go('tab.cart')"></button>
+
+      <div class="title">结算</div>
+  </div>
+  <ion-content class="has-header has-footer">
+
+<section>
+<div class="checkout-info" ng-click="gotoAddress()">
+    <div ng-show="addr.id">
+        <span class="addr-icon"></span>
+        <div class="address-info">
+            <div class="addr-header">收货人信息: </div>
+            <div class="">{{addr.data.receiver}}</div>
+            <div class="">{{addr.data.street1}}</div>
+            <div class="">{{addr.data.street2}}</div>
+            <div class="">{{addr.data.city}}, {{addr.data.state}}</div>
+            <div class="">{{addr.data.country}}, {{addr.data.postcode}}</div>
+        </div>
+        <div class="select-arrow address"></div>
+    </div>
+    <div ng-hide="addr.id">
+        <span class="addr-icon"></span>
+        <div class="address-info">
+            <div class="">新增收件地址</div>
+        </div>
+        <div class="go-add">+</div>
+    </div>
+</div>
+</section>
+
+<section class="clearfix" ng-cloak>
+<div class="" ng-show="ngCart.getTotalSelectedItems() > 0">
+
+    <table class="table ngCart cart-table">
+        <tbody>
+        <tr ng-repeat="item in ngCart.getCart().selectedItems track by $index">
+            <td class="img-cell">
+                <div>
+                    <a ng-href="#/item/{{item.getData().item.item_id}}">
+                        <img ng-src="{{item.getData().spec.images[0]}}">
+                    </a>
+                </div>
+            </td>
+            <td class="info-cell">
+                <div>{{ item.getName() }}</div>
+                <div>
+                    <span ng-repeat="(k, v) in item.getData().spec.attributes">
+                        {{ngCart.attrMap[k]}}: {{v}}
+                    </span>
+                </div>
+                <div class="btn-group cart-btn">
+                    <span>数量: {{ item.getQuantity() | number }}</span>
+                </div>
+            </td>
+            <td class="price-cell">{{ item.getTotal() | currency }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</section>
+
+<section>
+<div class="checkout-info">
+    <div class="icon partner-icon address"></div>
+    <div class="partner-info" ng-click="showProviderChoices()">
+        <div ng-show="selectedProvider" class="selected-partner">{{selectedProvider.display_name}} ({{selectedProvider.service_intro.duration}}):
+            <span class="detail-price selectable">{{selectedProvider.cn_shipping | currency }}</span>
+        </div>
+        <div ng-hide="selectedProvider" class="selected-partner">请选择运输方式</div>
+    </div>
+    <div class="select-arrow" ng-class="{'down-arrow': providersShown}"></div>
+</div>
+<div ng-show="providersShown" class="checkout-choices">
+    <div class="select-row" ng-repeat="provider in provider_prices"
+        ng-click="selectPartner(provider)">
+        <span class="select-icon"
+            ng-class="{'selected': selectedProvider.name == provider.name}">
+        </span>
+        <div class="checkout-choice">
+            {{provider.display_name}} ({{provider.service_intro.duration}})
+            <span class="detail-price selectable">{{provider.cn_shipping | currency }}</span>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+<div class="checkout-info">
+    <div class="icon coupon-icon address"></div>
+    <div class="coupon-info" ng-click="showCouponsChoices()">
+        <div ng-show="coupon_codes" class="">{{coupon_codes.description}}
+            <span class="detail-price selectable">-{{coupon_codes.saving }}</span>
+        </div>
+        <div ng-hide="coupon_codes" class="">使用折扣码/优惠券 </div>
+    </div>
+    <div class="select-arrow" ng-class="{'down-arrow': couponsShown}"></div>
+</div>
+<div ng-show="couponsShown" class="checkout-choices">
+    <div class="select-row" ng-click="noCoupon()">
+        <span class="select-icon"
+            ng-class="{'selected': noCouponSelected == true}">
+        </span>
+        <div class="checkout-choice">
+            不使用
+        </div>
+    </div>
+    <div class="select-row" ng-repeat="coupon in availableCoupons"
+        ng-click="selectCoupon(coupon)">
+        <span class="select-icon"
+            ng-class="{'selected': coupon_codes.code == coupon.code}">
+        </span>
+        <div class="checkout-choice">
+            <span>{{coupon.description}}</span>
+            <span class="detail-price selectable">-{{coupon.saving | currency }}</span>
+        </div>
+    </div>
+    <div class="select-row">
+        <span class="select-icon"
+            ng-click="selectInputCoupon()"
+            ng-class="{'selected': couponInputSelected}">
+        </span>
+        <div class="checkout-choice">
+            <span>折扣码</span>
+            <input ng-model="couponInput" type="text" class="coupon-input" placeholder="输入折扣码">
+            <span class="detail-price selectable">-{{coupon_codes.saving}}</span>
+            <span ng-click="confirmCoupon()" class="use-btn">使用</span>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<section>
+<div class="checkout-info">
+    <div class="item-info-table">
+        <dl class="item-info-field">
+            <dt class="">商品总价: </dt>
+            <dd class="detail-price">{{order.amount_usd | currency }}</dd>
+        </dl>
+        <dl class="item-info-field">
+            <dt class="">运费: </dt>
+            <dd class="detail-price">{{order.cn_shipping | currency }}</dd>
+        </dl>
+        <dl class="item-info-field">
+            <dt class="">税费: </dt>
+            <dd class="detail-price">0</dd>
+        </dl>
+    </div>
+
+</div>
+</section>
+  </ion-content>
+
+  <ion-footer-bar align-title="left" class="bar-stable">
+    <a class="button button-clear">
+        总计: <span class="footer-price"> {{ order.final |currency}}</span>
+    </a>
+    <h1 class="title"></h1>
+    <ngcart-checkout settings="{ coupon: coupon_codes.code,
+                        logistic_provider: selectedProvider.name,
+                        order_type: 'new'}">
+                        去付款</ngcart-checkout>
+  </ion-footer-bar>
+</ion-view>

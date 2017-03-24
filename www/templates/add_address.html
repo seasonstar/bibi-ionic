@@ -1,0 +1,75 @@
+<!-- 添加地址 -->
+<ion-modal-view >
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="closeModal()"></button>
+      <div class="title">编辑地址</div>
+      <button class="button button-clear button-dark" ng-click="saveAddress()">
+          保存
+      </button>
+  </div>
+
+  <ion-content class="has-header" style="overflow-y:hidden;">
+
+<section>
+<form name="addressForm" class="addressForm">
+
+    <div class="list">
+        <label class="item item-input">
+            <div class="input-label" ng-class="{'warning': addressForm.receiver.$error.required && !addressForm.receiver.$pristine}">
+                收件人全称
+            </div>
+            <input type="text" ng-model="addr.receiver" name="receiver" required />
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label" ng-class="addressForm.country.$error.required && !addressForm.country.$pristine">
+                国家
+            </div>
+            <select ng-model="addr.country" name="country" required>
+                <option ng-selected="addr.country== k" value="{{k}}" ng-repeat="k in COUNTRIES">{{k}}</option>
+            </select>
+        </label>
+        <label class="item item-input">
+            <div class="input-label" ng-class="{'warning': addressForm.street1.$error.required && !addressForm.street1.$pristine}">
+                地址 1
+            </div>
+            <input type="text" ng-model="addr.street1" name="street1" required />
+        </label>
+        <label class="item item-input">
+            <div class="input-label">
+                地址 2
+            </div>
+            <input type="text" ng-model="addr.street2" name="street2" required />
+        </label>
+        <label class="item item-input">
+            <div class="input-label" ng-class="{'warning': addressForm.city.$error.required && !addressForm.city.$pristine}">
+                城市
+            </div>
+            <input type="text" ng-model="addr.city" name="city" required />
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label" ng-class="addressForm.state.$error.required && !addressForm.state.$pristine">
+                州/省
+            </div>
+            <select ng-model="addr.state" name="state" required>
+                <option ng-selected="addr.state == k" value="{{k}}" ng-repeat="(k, v) in REGIONS">{{v}}</option>
+            </select>
+        </label>
+        <label class="item item-input">
+            <div class="input-label" ng-class="{'warning': addressForm.postcode.$error.required && !addressForm.postcode.$pristine}">
+                邮编
+            </div>
+            <input type="text" ng-model="addr.postcode" name="postcode" required />
+        </label>
+        <label class="item item-input">
+            <div class="input-label" ng-class="{'warning': addressForm.mobile_number.$error.required && !addressForm.mobile_number.$pristine}">
+                联系电话
+            </div>
+            <input type="text" ng-model="addr.mobile_number" name="mobile_number" required />
+        </label>
+    </div>
+</form>
+</section>
+
+  </ion-content>
+
+</ion-modal-view>

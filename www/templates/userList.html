@@ -1,0 +1,37 @@
+<ion-view class="view-post">
+    <ion-header-bar>
+        <button class="button button-clear icon ion-ios-arrow-back" ng-click="$ionicGoBack()"></button>
+        <div class="title">{{::title}}</div>
+    </ion-header-bar>
+
+    <ion-content class="has-header">
+
+    <ion-refresher
+        pulling-text="下拉刷新..."
+        on-refresh="doRefresh()"
+        spinner="spiral">
+    </ion-refresher>
+
+    <div class="list card notice" ng-repeat="user in users track by $index">
+        <div class="item item-avatar">
+            <img  ng-src="{{::user.avatar_thumb}}"
+                ng-click="zoom(user.avatar_url)">
+            <h2>{{::user.name}}
+                <span class="item-note">
+                <follow-btn user="user"></follow-btn>
+                </span>
+            </h2>
+        </div>
+    </div>
+    <div class="center-ico" ng-if="users.length==0">
+        <h1 >暂无用户</h1>
+    </div>
+    <ion-infinite-scroll
+        on-infinite="loadMore()"
+        distance="1"
+        spinner='spiral'
+        ng-if="moreDataCanBeLoaded()">
+    </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

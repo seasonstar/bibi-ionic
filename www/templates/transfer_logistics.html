@@ -1,0 +1,221 @@
+<ion-view>
+  <div class="bar bar-header">
+      <button class="button button-clear icon ion-ios-arrow-back" ng-click="$state.go('tab.orders')"></button>
+      <div class="title">物流详情</div>
+  </div>
+
+  <ion-content class="has-header">
+
+
+<section ng-if="order.payment_status == 'PAID'">
+    <div class="checkout-info">
+        <span class="addr-icon"></span>
+        <div class="address-info">
+            <p class="addr-header">收货人信息: </p>
+            <div class="">{{order.address.receiver}}</div>
+            <div class="">{{order.address.street1}}</div>
+            <div class="">{{order.address.street2}}</div>
+            <div class="">{{order.address.city}}, {{order.address.state}}</div>
+            <div class="">{{order.address.country}}, {{order.address.postcode}}</div>
+        </div>
+    </div>
+
+    <div class="checkout-info">
+        <div class="icon partner-icon address"></div>
+        <div class="partner-info">
+            <div class="selected-partner">{{order.provider.display_name}} ({{order.provider.desc}}):
+                <span class="detail-price pull-right">{{order.cn_shipping | currency }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-info">
+        <div class="icon coupon-icon address"></div>
+        <div class="coupon-info">
+            <div ng-show="order.discount.length==1" class="">{{order.discount[0].desc}}
+                <span class="detail-price pull-right">- {{order.discount[0].value | currency }}</span>
+            </div>
+            <div ng-show="order.discount.length==0" class="">
+                不使用
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="clearfix" ng-if="order.status == 'WAREHOUSE_IN'">
+    <div class="checkout-info" ng-click="gotoAddress()">
+        <div ng-show="addr.id">
+            <span class="addr-icon"></span>
+            <div class="address-info">
+                <p class="addr-header">寄往收货人信息: </p>
+                <div class="">{{addr.data.receiver}}</div>
+                <div class="">{{addr.data.street1}}</div>
+                <div class="">{{addr.data.street2}}</div>
+                <div class="">{{addr.data.city}}, {{addr.data.state}}</div>
+                <div class="">{{addr.data.country}}, {{addr.data.postcode}}</div>
+            </div>
+            <div class="select-arrow address"></div>
+        </div>
+        <div ng-hide="addr.id">
+            <span class="addr-icon"></span>
+            <div class="address-info">
+                <div class="">填写收件人信息</div>
+            </div>
+            <div class="go-add">+</div>
+        </div>
+    </div>
+
+    <div class="checkout-info">
+        <div class="icon partner-icon address"></div>
+        <div class="partner-info" ng-click="showProviderChoices()">
+            <div ng-show="selectedProvider" class="selected-partner">
+                {{selectedProvider.display_name}} ({{selectedProvider.service_intro.duration}}):
+                <span class="detail-price selectable">{{selectedProvider.cn_shipping | currency }}</span>
+            </div>
+            <div ng-hide="selectedProvider" class="selected-partner">请选择运输方式</div>
+        </div>
+        <div class="select-arrow" ng-class="{'down-arrow': providersShown}"></div>
+    </div>
+    <div ng-show="providersShown" class="checkout-choices">
+        <div class="select-row" ng-repeat="provider in provider_prices"
+            ng-click="selectPartner(provider)">
+            <span class="select-icon"
+                ng-class="{'selected': selectedProvider.name == provider.name}">
+            </span>
+            <div class="checkout-choice">
+                {{provider.display_name}} ({{provider.service_intro.duration}})
+                <span class="detail-price selectable">{{provider.cn_shipping | currency }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-info">
+        <div class="icon coupon-icon address"></div>
+        <div class="coupon-info" ng-click="showCouponsChoices()">
+            <div ng-show="coupon_codes" class="">{{coupon_codes.description}}
+                <span class="detail-price selectable">-{{coupon_codes.saving | currency }}</span>
+            </div>
+            <div ng-hide="coupon_codes" class="">使用折扣码/优惠券 </div>
+        </div>
+        <div class="select-arrow" ng-class="{'down-arrow': couponsShown}"></div>
+    </div>
+    <div ng-show="couponsShown" class="checkout-choices">
+        <div class="select-row" ng-click="noCoupon()">
+            <span class="select-icon"
+                ng-class="{'selected': noCouponSelected == true}">
+            </span>
+            <div class="checkout-choice">
+                不使用
+            </div>
+        </div>
+        <div class="select-row" ng-repeat="coupon in availableCoupons"
+            ng-click="selectCoupon(coupon)">
+            <span class="select-icon"
+                ng-class="{'selected': coupon_codes.code == coupon.code}">
+            </span>
+            <div class="checkout-choice">
+                {{coupon.description}}
+                <span class="detail-price selectable">-{{coupon.saving | currency }}</span>
+            </div>
+        </div>
+        <div class="select-row">
+            <span class="select-icon"
+                ng-click="selectInputCoupon()"
+                ng-class="{'selected': couponInputSelected}">
+            </span>
+            <div class="checkout-choice">
+                折扣码 <input ng-model="couponInput" type="text" class="" placeholder="输入折扣码">
+                <span class="detail-price selectable">-{{coupon_codes.saving}}</span>
+                <span ng-click="confirmCoupon()" class="use-btn">使用</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="logistic-row">
+        <span class="">
+            包裹编号：{{logistic.partner_tracking_no}}
+        </span>
+        <span class="pull-right">
+            <ul class="logistic-nav">
+                <li class=""
+                    ng-repeat="lo in order.logistics"
+                    ng-if="order.logistics.length > 1"
+                    ng-class="{'current': currTab==$index}"
+                    ng-click="goTab($index, lo)">
+                    包裹{{$index+1}}</li>
+            </ul>
+        </span>
+    </div>
+
+    <table class="table ngCart cart-table">
+        <tbody>
+        <tr ng-repeat="entry in logistic.entries track by $index">
+            <td class="img-cell">
+                <div>
+                    <img ng-src="{{entry.item.primary_img}}">
+                </div>
+            </td>
+            <td class="info-cell">
+                <div>
+                    {{ entry.title }}
+                </div>
+                <div>
+                    <span>数量: {{ entry.quantity | number }}</span>
+                </div>
+                <div class="">
+                    备注:{{ entry.remark }}
+                </div>
+                <div class="tracking-note">
+                    <input type="text" placeholder="请填写快递单号"
+                        ng-model="entry.shipping_info.number">
+                    <button class="button button-energized button-small"
+                        ng-click="fillTracking(entry)">
+                        保存
+                    </button>
+                </div>
+            </td>
+            <td class="price-cell">￥{{ entry.amount }}</td>
+        </tr>
+    </table>
+
+    <div class="logistic-row">
+        <ul class="progress-indicator">
+            <li ng-class="{'completed': allStatus.indexOf(logistic.current_status) >= $index}"
+                 ng-repeat="status in logistic.all_status">
+                <span class="bubble"></span>
+                <div class="logistic-status">{{status.desc}}</div>
+            </li>
+        </ul>
+    </div>
+    <div class="logistic-row">
+        <ul class="tracking">
+            <li ng-repeat="h in logistic.history| reverse">
+                <div class="">{{h.desc}}</div>
+                <div class="time">{{h.time}}</div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+  </ion-content>
+
+  <ion-footer-bar align-title="left" class="bar-stable">
+    <a class="button button-clear">
+        总计: <span class="footer-price"> {{ order.final |currency}}</span>
+    </a>
+    <h1 class="title"></h1>
+    <div class="buttons">
+        <ngcart-checkout ng-if="order.status=='WAREHOUSE_IN'" settings="{ order_id: order.id , order_type: 'existed'}">
+            去付款
+        </ngcart-checkout>
+        <button class="button button-default"
+            ng-click="cancelOrder()"
+            ng-if="order.payment_status=='UNPAID'">
+            取消订单
+        </button>
+    </div>
+  </ion-footer-bar>
+
+</ion-view>

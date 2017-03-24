@@ -1,0 +1,104 @@
+<ion-view class="view-post">
+    <ion-header-bar>
+        <button class="button button-clear button-dark icon ion-ios-arrow-back"
+              ng-click="$ionicGoBack()"></button>
+        <div class="title">详情</div>
+        <button class="button button-clear button-dark icon ion-ios-more"
+              ng-click="actions()"></button>
+    </ion-header-bar>
+
+    <ion-content class="has-header has-footer" overflow-scroll="false" >
+
+
+    <div class="list card animated fadeIn">
+        <div class="item item-avatar">
+            <img  ng-src="{{::post.user.avatar_thumb}}" ng-click="goUser(post.user.id)">
+            <h2>{{::post.user.name}}
+                <div class="post-type"
+                    ng-class="post.type?post.type.en:'UNCLASSIFIED'" >
+                    <i class="icon ion-bookmark"></i> {{::post.type.cn}}
+                </div>
+                <span class="item-note">{{::post.created_at | amTimeAgo}}</span>
+            </h2>
+        </div>
+
+        <div class="item item-image full-height"
+            ng-repeat="img in images"
+            ng-click="zoom(img)" >
+            <img ng-src="{{::img}}">
+        </div>
+
+        <div class="item item-body">
+            <p class="post-body" ng-bind-html="post.title || '' | nl2br">
+        </div>
+
+        <div class="item item-buttons">
+            <div class="row">
+                <div class="col col-60 text-left">
+                    <button ng-click="sameCity()" ng-if="post.location"
+                        class="button button-clear button-dark icon-left ion-ios-location">
+                        <span>{{::post.location}}</span>
+                    </button>
+                </div>
+                <div class="col col-40 text-right">
+                    <button ng-click="like()"
+                        ng-class="post.is_liked ? 'ion-ios-heart' : 'ion-ios-heart-outline' "
+                        class="button button-clear button-dark icon-left button-heart">
+                        {{post.num_likes || '喜欢'}}
+                    </button>
+                    <button
+                        class="button button-clear button-dark icon-left ion-ios-chatbubble-outline">
+                        {{post.num_comments || '评论'}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="tag-row" style="margin-left:12px">
+            <button class="button button-small button-stable tag"
+                ng-repeat="tag in post.tags"
+                ng-click="searchTag(tag)">
+                {{::tag}}
+            </button>
+        </div>
+    </div>
+
+    <div class="list avatar-row">
+        <div class="avatar-list">
+            <div class="avatar-pic" ng-repeat="like in post.likes|limitTo:7">
+                <img ng-src="{{::like.user.avatar_thumb}}" ng-click="goUser(like.user.id)">
+            </div>
+        </div>
+        <div class="more" >
+            <a ng-href="#/userList/{{::post.post_id}}/postLikes">
+                <img src="img/icons/more.jpg">
+            </a>
+        </div>
+    </div>
+
+    <div class="item item-divider"></div>
+    <div class="list">
+        <div class="item item-avatar" ng-repeat="comment in post.comments" ng-click="deleteComment(comment)">
+            <img ng-src="{{::comment.user.avatar_thumb}}" ng-click="goUser(comment.user.id)">
+            <h2>{{::comment.user.name}}
+                <span class="item-note">
+                    {{::comment.created_at | amTimeAgo}}
+                </span>
+
+            </h2>
+            <p>{{::comment.content}}</p>
+
+        </div>
+    </div>
+    </ion-content>
+
+    <ion-footer-bar keyboard-attach  class="bar bar-stable item-input-inset">
+        <button ng-click="like()"
+            ng-class="post.is_liked ? 'ion-ios-heart' : 'ion-ios-heart-outline' "
+            class="button button-clear button-icon ">
+        </button>
+        <label class="item-input-wrapper">
+          <input ng-model="message" placeholder="说些什么" type="text"/>
+        </label>
+        <button class="button button-clear button-icon" ng-click="comment()">评论</button>
+    </ion-footer-bar>
+</ion-view>
