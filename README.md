@@ -12,7 +12,7 @@ Bibi 电商全栈解决方案，配合以下项目使用:
 ### Screenshot
 ![](http://7xn6eu.com1.z0.glb.clouddn.com/ionicapp01.jpg)
 ![](http://7xn6eu.com1.z0.glb.clouddn.com/ionicapp02.jpg)
-![](http://7xn6eu.com1.z0.glb.clouddn.com/ionicapp03.jpg)
+![](http://7xn6eu.com1.z0.glb.clouddn.com/ionicapp031.jpg)
 
 ## 快速开始
 
