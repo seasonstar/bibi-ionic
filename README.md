@@ -4,7 +4,7 @@ Bibi 电商全栈解决方案，配合以下项目使用:
 
 > [bibi server](https://github.com/seasonstar/bibi) 服务端项目
 
-> [bibi-frontend](https://github.com/seasonstar/bibi) 微信前端项目
+> [bibi-frontend](https://github.com/seasonstar/bibi-frontend) 微信前端项目
 
 [app下载地址](http://android.myapp.com/myapp/detail.htm?apkName=cn.maybi.ionicapp)
 
