@@ -8,6 +8,10 @@ Bibi 电商全栈解决方案，配合以下项目使用:
 
 [app下载地址](http://android.myapp.com/myapp/detail.htm?apkName=cn.maybi.ionicapp)
 
+---------------------
+### Screenshot
+![](http://7xn6eu.com1.z0.glb.clouddn.com/ionicapp3.jpg)
+
 ## 快速开始
 
 ### 1. 首先安装ionic
