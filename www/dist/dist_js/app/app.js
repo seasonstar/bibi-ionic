@@ -599,10 +599,5 @@ angular.module('maybi', ['ionic', 'ionic.service.core','ngCordova',
   $urlRouterProvider.otherwise('/explore');
   $httpProvider.interceptors.push('timeoutHttpIntercept');
 
-  AWS.config.update({
-      accessKeyId: 'AKIAI4JD55P3DQLOXQKQ',
-      secretAccessKey: '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'
-  });
-  AWS.config.region = 'us-west-1';
 
 }]);
